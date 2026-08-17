@@ -1,0 +1,26 @@
+{
+  "name": "@letzscan/edge",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "description": "LëtzScan Cloudflare Worker: public API, scheduled live ingestion, R2 access.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "wrangler deploy --dry-run --outdir dist --env=\"\"",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "deploy:staging": "wrangler deploy --env staging",
+    "deploy:production": "wrangler deploy --env production",
+    "tail:staging": "wrangler tail --env staging"
+  },
+  "dependencies": {
+    "@letzscan/contracts": "*",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260817.1",
+    "vitest": "^4.1.10",
+    "wrangler": "^4.123.0"
+  }
+}

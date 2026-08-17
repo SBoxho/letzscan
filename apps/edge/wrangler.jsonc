@@ -1,0 +1,78 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "letzscan-edge",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-17",
+  "workers_dev": false,
+
+  // ---------------------------------------------------------------------------
+  // Environments
+  //
+  // The top level is LOCAL ONLY (`wrangler dev`). It has no cron triggers, so a
+  // developer never accidentally starts polling providers from a laptop, and it
+  // points at a throwaway bucket.
+  //
+  // Secrets are NEVER declared here. Locally they come from `.dev.vars`
+  // (gitignored); in staging and production from `wrangler secret put`.
+  // See docs/adr/0004-environments-and-deployment.md
+  // ---------------------------------------------------------------------------
+  "vars": {
+    "ENVIRONMENT": "local",
+    "BUILD_VERSION": "dev"
+  },
+  "r2_buckets": [
+    {
+      "binding": "DATA",
+      "bucket_name": "letzscan-data-dev",
+      "preview_bucket_name": "letzscan-data-dev"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  },
+
+  "env": {
+    "staging": {
+      "name": "letzscan-edge-staging",
+      "vars": {
+        "ENVIRONMENT": "staging",
+        "BUILD_VERSION": "dev"
+      },
+      "r2_buckets": [
+        {
+          "binding": "DATA",
+          "bucket_name": "letzscan-data-staging"
+        }
+      ],
+      "observability": {
+        "enabled": true
+      },
+      // Cadences are placeholders until the first connector exists. A cron is
+      // only added once a source declares the cadence that justifies it.
+      "triggers": {
+        "crons": ["*/15 * * * *"]
+      }
+    },
+
+    "production": {
+      "name": "letzscan-edge",
+      "vars": {
+        "ENVIRONMENT": "production",
+        "BUILD_VERSION": "dev"
+      },
+      "r2_buckets": [
+        {
+          "binding": "DATA",
+          "bucket_name": "letzscan-data"
+        }
+      ],
+      "observability": {
+        "enabled": true,
+        "head_sampling_rate": 0.2
+      },
+      "triggers": {
+        "crons": ["*/15 * * * *"]
+      }
+    }
+  }
+}

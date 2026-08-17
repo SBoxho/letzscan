@@ -1,0 +1,21 @@
+id: lu-communes
+title: Luxembourg communes
+level: commune
+code_scheme: LAU
+source_id: statec-lustat
+valid_from: '2024-01-01'
+supersedes: []
+
+description: >-
+  Placeholder declaration for the commune geography set. `members` is empty on
+  purpose: the gazetteer is produced by the pipeline from an authoritative
+  source, not hand-maintained here.
+
+  Two things must be settled by the first vertical slice, and are deliberately
+  not guessed now: (1) `valid_from` must be the producer's own effective date
+  for this boundary version, not an assumption; (2) boundary geometry comes from
+  an official boundary source, which gets its own catalogue entry — this set
+  currently only declares the code space.
+
+# Boundary changes create a NEW set plus a crosswalk. They never mutate this one.
+members: []

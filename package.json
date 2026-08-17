@@ -1,0 +1,49 @@
+{
+  "name": "letzscan",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "description": "Open-source platform for exploring Luxembourg public data, live conditions, places and trends.",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @letzscan/web",
+    "dev:edge": "npm run dev --workspace @letzscan/edge",
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "schemas:build": "tsx packages/contracts/scripts/build-schemas.ts",
+    "schemas:check": "tsx packages/contracts/scripts/build-schemas.ts --check",
+    "check:secrets": "node scripts/check-secrets.mjs",
+    "catalog:validate": "uv run --directory pipeline letzscan validate-catalog",
+    "py:sync": "uv sync --directory pipeline",
+    "py:lint": "uv run --directory pipeline ruff check . && uv run --directory pipeline ruff format --check .",
+    "py:test": "uv run --directory pipeline pytest",
+    "verify:js": "npm run check:secrets && npm run format:check && npm run lint && npm run typecheck && npm run schemas:check && npm run test && npm run build",
+    "verify:py": "npm run py:lint && npm run py:test && npm run catalog:validate",
+    "verify": "npm run verify:js && npm run verify:py"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.13.3",
+    "eslint": "^10.8.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.4",
+    "globals": "^17.11.0",
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.12",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.67.0"
+  }
+}

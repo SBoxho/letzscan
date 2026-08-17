@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://letzscan.lu/schemas/observation.schema.json",
+  "type": "object",
+  "properties": {
+    "indicator_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+    },
+    "geo_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "period": {
+      "type": "string",
+      "pattern": "^(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12]\\d|3[01]))?)?|\\d{4}-Q[1-4]|\\d{4}-W(?:0[1-9]|[1-4]\\d|5[0-3])|\\d{4}-\\d{2}-\\d{2}T[0-2]\\d:[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|[+-][0-2]\\d:[0-5]\\d))(?:\\/(?:\\d{4}(?:-\\d{2}(?:-\\d{2})?)?|\\d{4}-Q[1-4]|\\d{4}-\\d{2}-\\d{2}T[0-2]\\d:[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|[+-][0-2]\\d:[0-5]\\d)))?$"
+    },
+    "value": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "unit": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "observed",
+        "provisional",
+        "revised",
+        "estimated",
+        "suppressed",
+        "missing"
+      ]
+    },
+    "dataset_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+    },
+    "source_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+    },
+    "release_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+    }
+  },
+  "required": [
+    "indicator_id",
+    "geo_id",
+    "period",
+    "value",
+    "unit",
+    "status",
+    "dataset_id",
+    "source_id"
+  ],
+  "title": "Observation",
+  "description": "One indicator value for one geography and one period."
+}

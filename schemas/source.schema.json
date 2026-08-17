@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://letzscan.lu/schemas/source.schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "producer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "access": {
+      "type": "string",
+      "enum": [
+        "open",
+        "registration",
+        "api_key",
+        "approval"
+      ]
+    },
+    "licence": {
+      "type": "object",
+      "properties": {
+        "spdx": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "attribution": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "spdx",
+        "attribution"
+      ]
+    },
+    "terms_checked_at": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+    },
+    "cadence": {
+      "type": "string",
+      "enum": [
+        "realtime",
+        "sub_hourly",
+        "hourly",
+        "daily",
+        "weekly",
+        "monthly",
+        "quarterly",
+        "annual",
+        "irregular",
+        "static"
+      ]
+    },
+    "connector": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+    },
+    "status": {
+      "default": "draft",
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "disabled"
+      ]
+    },
+    "status_reason": {
+      "type": "string"
+    },
+    "coverage": {
+      "type": "string"
+    },
+    "contact": {
+      "type": "string"
+    },
+    "quality_rules": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "producer",
+    "canonical_url",
+    "access",
+    "licence",
+    "terms_checked_at",
+    "cadence",
+    "connector"
+  ],
+  "title": "Source",
+  "description": "A reviewed upstream provider distribution and its reuse terms."
+}

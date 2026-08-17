@@ -1,0 +1,9 @@
+node_modules
+dist
+coverage
+.wrangler
+.venv
+uv.lock
+package-lock.json
+schemas/*.schema.json
+*.ipynb

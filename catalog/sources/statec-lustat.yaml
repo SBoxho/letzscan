@@ -1,0 +1,41 @@
+id: statec-lustat
+title: STATEC LUSTAT statistical database (SDMX API)
+producer: STATEC — Institut national de la statistique et des études économiques
+canonical_url: https://data.public.lu/fr/datasets/api-de-la-base-de-donnees-lustat/
+access: open
+
+licence:
+  spdx: CC0-1.0
+  url: https://creativecommons.org/publicdomain/zero/1.0/
+  attribution: 'Source: STATEC (LUSTAT)'
+  notes: >-
+    Recorded from the architecture review dated 2026-08-16 and NOT yet verified
+    against the individual distribution page. Re-read the distribution before the
+    first publication: the distribution wins, never a blanket portal assumption.
+    CC0 data still gets attribution here, as good public-data practice.
+
+terms_checked_at: '2026-08-16'
+
+# LUSTAT dataflows are released on their own schedules (monthly to annual), so
+# cadence is declared per dataset once the first dataflow is pinned.
+cadence: irregular
+
+connector: statec-lustat
+status: draft
+status_reason: >-
+  No connector implemented yet. This entry exists so the first vertical slice —
+  population by commune — has a reviewed source to start from.
+
+coverage: >-
+  Luxembourg. Geographic detail varies by dataflow; some series are national
+  only, others reach commune level.
+
+quality_rules:
+  - geo_codes_resolve_in_geography_set
+  - suppressed_values_are_null
+  - periods_parse_as_iso
+
+notes: >-
+  Pin exact dataflow and dimension identifiers in the dataset entry rather than
+  in code. SDMX dimension ordering changes are a schema change and must fail the
+  build, not silently reshape a series.

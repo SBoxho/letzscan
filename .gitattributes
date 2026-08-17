@@ -1,0 +1,11 @@
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.webp binary
+*.pmtiles binary
+*.parquet binary
+
+# Notebooks are exploratory: keep diffs readable and outputs out of history.
+# See notebooks/exploration/README.md for the nbstripout setup.
+*.ipynb -diff

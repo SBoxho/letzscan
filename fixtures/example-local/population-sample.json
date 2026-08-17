@@ -1,0 +1,28 @@
+{
+  "_note": "SYNTHETIC. Not real data, not from any producer. Shaped like a typical Luxembourg distribution so the reference connector has something realistic to normalise.",
+  "meta": {
+    "extrait_le": "17/08/2026",
+    "unite": "personnes",
+    "remarque": "':' indique une valeur non communiquée"
+  },
+  "donnees": [
+    {
+      "CODE_COMMUNE": "0304",
+      "LIB_COMMUNE": "Exampleville",
+      "ANNEE": "2025",
+      "POP_TOTALE": "12 345"
+    },
+    {
+      "CODE_COMMUNE": "0311",
+      "LIB_COMMUNE": "Otherplace-sur-Rivière",
+      "ANNEE": "2025",
+      "POP_TOTALE": "1'204"
+    },
+    {
+      "CODE_COMMUNE": "0399",
+      "LIB_COMMUNE": "Smallville",
+      "ANNEE": "2025",
+      "POP_TOTALE": ":"
+    }
+  ]
+}

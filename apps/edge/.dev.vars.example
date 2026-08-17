@@ -1,0 +1,15 @@
+# Local Worker secrets. Copy to `.dev.vars` — which is gitignored and must stay
+# that way. `.dev.vars` is read by `wrangler dev` only.
+#
+# In staging and production these are set with:
+#   wrangler secret put MOBILITEIT_ACCESS_ID --env staging
+#
+# Rules:
+#   - A secret never appears in wrangler.jsonc, in a committed manifest, in a
+#     log line, in an error message, or in any response body.
+#   - A secret never gets a VITE_ prefix. Anything the browser needs from a
+#     credential-bearing provider must be proxied by this Worker.
+
+# Mobiliteit.lu / HAFAS access id (query parameter, not a header).
+# Not used yet — kept here to document where it will live.
+MOBILITEIT_ACCESS_ID=
