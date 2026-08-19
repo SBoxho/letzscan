@@ -1,0 +1,24 @@
+{
+  "access": "open",
+  "cadence": "irregular",
+  "canonical_url": "https://data.public.lu/fr/datasets/api-de-la-base-de-donnees-lustat/",
+  "connector": "statec-lustat",
+  "coverage": "Luxembourg. Geographic detail varies by dataflow; some series are national only, others reach commune level. 907 dataflows were listed on 2026-08-19.",
+  "id": "statec-lustat",
+  "licence": {
+    "attribution": "Source: STATEC (LUSTAT)",
+    "notes": "Verified 2026-08-19 by reading the producer's own terms at https://statistiques.public.lu/fr/support/notice.html. Section \"Open Data et propriété intellectuelle (Copyright)\" publishes STATEC content \"sans restriction, sous les termes du Transfert universel dans le Domaine Public Creative Commons CC0 1.0\". The CGU on that same page explicitly names \"le site web statistiques.public.lu et la base de données lustat.statec.lu\", so the grant reaches this distribution rather than being inferred from a portal. Corroborated by https://data.public.lu/api/1/datasets/api-de-la-base-de-donnees-lustat/, which records license \"cc-zero\" for this exact API dataset.\nTwo limits a future re-checker must keep in mind. (1) The grant is worded \"sauf indication contraire\", so it is a default rather than a per-dataflow statement; the DF_X021 dataflow and DSD carry no contrary rights annotation, which was checked. (2) There is no licence field inside the SDMX payload itself — the terms attach via the site-wide notice, not the API response. CC0 requires no attribution; STATEC requests it as a goodwill guideline and LëtzScan attributes anyway, per DATA_LICENSES rule 3.",
+    "spdx": "CC0-1.0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  "notes": "SDMX 2.1 REST (.Stat Suite / NSI Web Service). The service root is /rest/<resource>; a bare /rest/ returns 404. Structure and data are reachable without a key: dataflows at https://lustat.statec.lu/rest/dataflow/LU1/all/latest.\nFormats: SDMX-CSV via ?format=csv, and SDMX-JSON **version 2** via ?format=jsondata. Requesting Accept: application/vnd.sdmx.data+json;version=1.0.0 returns HTTP 406 — the server advertises the versions it will serve in the 406 body. LëtzScan reads CSV, which diffs legibly when a fixture is re-recorded.\n`labels=id` (codes rather than display names) is a media-type parameter on the Accept header, not a query parameter: passing ?labels=id returns HTTP 422 with the list of parameters the service does accept.\nPin exact dataflow and dimension identifiers in the dataset entry rather than in code. SDMX dimension ordering changes are a schema change and must fail the build, not silently reshape a series.",
+  "producer": "STATEC — Institut national de la statistique et des études économiques",
+  "quality_rules": [
+    "geo_codes_resolve_in_geography_set",
+    "suppressed_values_are_null",
+    "periods_parse_as_iso"
+  ],
+  "status": "active",
+  "terms_checked_at": "2026-08-19",
+  "title": "STATEC LUSTAT statistical database (SDMX API)"
+}

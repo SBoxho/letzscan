@@ -26,6 +26,8 @@
     "schemas:check": "tsx packages/contracts/scripts/build-schemas.ts --check",
     "check:secrets": "node scripts/check-secrets.mjs",
     "catalog:validate": "uv run --directory pipeline letzscan validate-catalog",
+    "data:snapshot": "uv run --directory pipeline letzscan publish statec-lustat --out ../apps/web/public/data --since 2024",
+    "data:publish": "uv run --directory pipeline letzscan publish statec-lustat --out ../.out/published",
     "py:sync": "uv sync --directory pipeline",
     "py:lint": "uv run --directory pipeline ruff check . && uv run --directory pipeline ruff format --check .",
     "py:test": "uv run --directory pipeline pytest",

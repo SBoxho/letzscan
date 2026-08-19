@@ -6,6 +6,13 @@
 *.pmtiles binary
 *.parquet binary
 
+# Recorded provider payloads and published artifacts are verbatim bytes, and
+# their SHA-256 is published in fixtures/*/README.md and in every release
+# manifest. Normalising line endings here would silently invalidate every
+# checksum on the first fresh clone. Do not remove these two lines.
+fixtures/** -text
+apps/web/public/data/** -text
+
 # Notebooks are exploratory: keep diffs readable and outputs out of history.
 # See notebooks/exploration/README.md for the nbstripout setup.
 *.ipynb -diff

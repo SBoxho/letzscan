@@ -1,0 +1,54 @@
+id: statec-lau-codes
+title: STATEC LAU code register for Luxembourg communes and cantons
+producer: STATEC — Institut national de la statistique et des études économiques
+canonical_url: https://data.public.lu/fr/datasets/codes-lau-des-communes-du-grand-duche-de-luxembourg/
+access: open
+
+licence:
+  spdx: CC0-1.0
+  url: https://creativecommons.org/publicdomain/zero/1.0/
+  attribution: 'Source: STATEC'
+  notes: >-
+    Verified 2026-08-19 against the producer's own terms at
+    https://statistiques.public.lu/fr/support/notice.html, section "Open Data et
+    propriété intellectuelle (Copyright)", which publishes STATEC content "sans
+    restriction, sous les termes du Transfert universel dans le Domaine Public
+    Creative Commons CC0 1.0". The same page's CGU names both
+    statistiques.public.lu and lustat.statec.lu, so the grant covers this
+    distribution rather than being inferred from the portal. CC0 imposes no
+    attribution condition; STATEC requests it as a goodwill guideline and
+    LëtzScan honours that, per DATA_LICENSES rule 3.
+
+terms_checked_at: '2026-08-19'
+
+cadence: irregular
+
+# No connector: this register is the *authority* the commune code space and its
+# effective date were verified against, not a series LëtzScan ingests. Its codes
+# were checked to be identical to those carried by the statec-lustat dataflow
+# already ingested, so nothing is published from this entry yet.
+connector: statec-lau-codes
+status: draft
+status_reason: >-
+  Catalogued as the reviewed authority for the LAU commune code space and its
+  effective date. Read, verified and cited by catalog/geographies/lu-communes.yaml;
+  not ingested, so it stays draft until something is actually published from it.
+
+coverage: >-
+  Luxembourg. LAU 1 (12 cantons) and LAU 2 (100 communes), with historical code
+  sets for the 2017 (105 communes) and 2018/2019 (102 communes) boundary versions.
+
+quality_rules:
+  - geo_codes_resolve_in_geography_set
+
+notes: >-
+  The distribution is A1106.xlsx, whose Index sheet states the effective date of
+  each code set in the producer's own words: "codes UAL au 01.09.2023 (100
+  communes)", "codes UAL au 01.01.2019 / 01.01.2018 (102 communes)" and "codes
+  UAL au 01.01.2017 (105 communes)". UAL is the French rendering of LAU. That
+  first line is the source of `valid_from` in catalog/geographies/lu-communes.yaml.
+  Direct file:
+  https://statistiques.public.lu/dam-assets/fr/donnees-autres-formats/territoire-environ-energie/territoire/A1106.xlsx
+
+  Commune boundary *geometry* is deliberately not covered here — that producer
+  choice is deferred to its own ADR. See docs/adr/0007.

@@ -1,0 +1,812 @@
+{
+  "code_scheme": "LAU",
+  "description": "The 100 Luxembourg communes in force since 1 September 2023, keyed by their LAU 2 code. `members` is empty on purpose: the gazetteer is produced by the pipeline from an authoritative source and published as an artifact, not hand-maintained here.\n`valid_from` is the producer's own effective date, not an assumption. STATEC's LAU code register (A1106.xlsx, sheet \"LU_SEP 2023\") states it verbatim as \"codes UAL au 01.09.2023 (100 communes)\". It is corroborated by the two acts that produced the current set, both of which say in their Article 13 \"La présente loi entre en vigueur le 1er septembre 2023\":\n  - Loi du 3 mars 2023 portant fusion des communes de Grosbous et de Wahl,\n    creating « Groussbus-Wal » (LAU 0711)\n    https://legilux.public.lu/eli/etat/leg/loi/2023/03/03/a115/jo\n  - Loi du 3 mars 2023 portant fusion des communes de Bous et de Waldbredimus,\n    creating « Bous-Waldbredimus » (LAU 1209)\n    https://legilux.public.lu/eli/etat/leg/loi/2023/03/03/a117/jo\n\nThe code space is the national LAU scheme: two digits of canton (LAU 1) plus two of commune, zero-padded. The codes carried by the statec-lustat dataflow were checked on 2026-08-19 to be exactly the 100 codes in STATEC's LAU register, so statistical series join to this set on code without a crosswalk.\nCommune boundary *geometry* is deliberately absent. This set declares the code space only; choosing a geometry producer is a separate decision recorded in docs/adr/0007-commune-geography-authority.md.",
+  "id": "lu-communes",
+  "level": "commune",
+  "members": [
+    {
+      "code": "0101",
+      "id": "lu.commune.0101",
+      "level": "commune",
+      "name": "Dippach",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0102",
+      "id": "lu.commune.0102",
+      "level": "commune",
+      "name": "Garnich",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0103",
+      "id": "lu.commune.0103",
+      "level": "commune",
+      "name": "Habscht",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0104",
+      "id": "lu.commune.0104",
+      "level": "commune",
+      "name": "Käerjeng",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0105",
+      "id": "lu.commune.0105",
+      "level": "commune",
+      "name": "Kehlen",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0106",
+      "id": "lu.commune.0106",
+      "level": "commune",
+      "name": "Koerich",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0107",
+      "id": "lu.commune.0107",
+      "level": "commune",
+      "name": "Kopstal",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0108",
+      "id": "lu.commune.0108",
+      "level": "commune",
+      "name": "Mamer",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0110",
+      "id": "lu.commune.0110",
+      "level": "commune",
+      "name": "Steinfort",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0201",
+      "id": "lu.commune.0201",
+      "level": "commune",
+      "name": "Bettembourg",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0202",
+      "id": "lu.commune.0202",
+      "level": "commune",
+      "name": "Differdange",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0203",
+      "id": "lu.commune.0203",
+      "level": "commune",
+      "name": "Dudelange",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0204",
+      "id": "lu.commune.0204",
+      "level": "commune",
+      "name": "Esch-sur-Alzette",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0205",
+      "id": "lu.commune.0205",
+      "level": "commune",
+      "name": "Frisange",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0206",
+      "id": "lu.commune.0206",
+      "level": "commune",
+      "name": "Kayl",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0207",
+      "id": "lu.commune.0207",
+      "level": "commune",
+      "name": "Leudelange",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0208",
+      "id": "lu.commune.0208",
+      "level": "commune",
+      "name": "Mondercange",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0209",
+      "id": "lu.commune.0209",
+      "level": "commune",
+      "name": "Pétange",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0210",
+      "id": "lu.commune.0210",
+      "level": "commune",
+      "name": "Reckange-sur-Mess",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0211",
+      "id": "lu.commune.0211",
+      "level": "commune",
+      "name": "Roeser",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0212",
+      "id": "lu.commune.0212",
+      "level": "commune",
+      "name": "Rumelange",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0213",
+      "id": "lu.commune.0213",
+      "level": "commune",
+      "name": "Sanem",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0214",
+      "id": "lu.commune.0214",
+      "level": "commune",
+      "name": "Schifflange",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0301",
+      "id": "lu.commune.0301",
+      "level": "commune",
+      "name": "Bertrange",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0302",
+      "id": "lu.commune.0302",
+      "level": "commune",
+      "name": "Contern",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0303",
+      "id": "lu.commune.0303",
+      "level": "commune",
+      "name": "Hesperange",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0304",
+      "id": "lu.commune.0304",
+      "level": "commune",
+      "name": "Luxembourg",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0305",
+      "id": "lu.commune.0305",
+      "level": "commune",
+      "name": "Niederanven",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0306",
+      "id": "lu.commune.0306",
+      "level": "commune",
+      "name": "Sandweiler",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0307",
+      "id": "lu.commune.0307",
+      "level": "commune",
+      "name": "Schuttrange",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0308",
+      "id": "lu.commune.0308",
+      "level": "commune",
+      "name": "Steinsel",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0309",
+      "id": "lu.commune.0309",
+      "level": "commune",
+      "name": "Strassen",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0310",
+      "id": "lu.commune.0310",
+      "level": "commune",
+      "name": "Walferdange",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0311",
+      "id": "lu.commune.0311",
+      "level": "commune",
+      "name": "Weiler-la-Tour",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0401",
+      "id": "lu.commune.0401",
+      "level": "commune",
+      "name": "Colmar-Berg",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0402",
+      "id": "lu.commune.0402",
+      "level": "commune",
+      "name": "Bissen",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0403",
+      "id": "lu.commune.0403",
+      "level": "commune",
+      "name": "Helperknapp",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0404",
+      "id": "lu.commune.0404",
+      "level": "commune",
+      "name": "Fischbach",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0405",
+      "id": "lu.commune.0405",
+      "level": "commune",
+      "name": "Heffingen",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0406",
+      "id": "lu.commune.0406",
+      "level": "commune",
+      "name": "Larochette",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0407",
+      "id": "lu.commune.0407",
+      "level": "commune",
+      "name": "Lintgen",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0408",
+      "id": "lu.commune.0408",
+      "level": "commune",
+      "name": "Lorentzweiler",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0409",
+      "id": "lu.commune.0409",
+      "level": "commune",
+      "name": "Mersch",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0410",
+      "id": "lu.commune.0410",
+      "level": "commune",
+      "name": "Nommern",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0501",
+      "id": "lu.commune.0501",
+      "level": "commune",
+      "name": "Clervaux",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0502",
+      "id": "lu.commune.0502",
+      "level": "commune",
+      "name": "Wincrange",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0503",
+      "id": "lu.commune.0503",
+      "level": "commune",
+      "name": "Parc Hosingen",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0504",
+      "id": "lu.commune.0504",
+      "level": "commune",
+      "name": "Troisvierges",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0505",
+      "id": "lu.commune.0505",
+      "level": "commune",
+      "name": "Weiswampach",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0601",
+      "id": "lu.commune.0601",
+      "level": "commune",
+      "name": "Bettendorf",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0602",
+      "id": "lu.commune.0602",
+      "level": "commune",
+      "name": "Bourscheid",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0603",
+      "id": "lu.commune.0603",
+      "level": "commune",
+      "name": "Diekirch",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0604",
+      "id": "lu.commune.0604",
+      "level": "commune",
+      "name": "Erpeldange-sur-Sûre",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0605",
+      "id": "lu.commune.0605",
+      "level": "commune",
+      "name": "Ettelbruck",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0606",
+      "id": "lu.commune.0606",
+      "level": "commune",
+      "name": "Feulen",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0607",
+      "id": "lu.commune.0607",
+      "level": "commune",
+      "name": "Mertzig",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0608",
+      "id": "lu.commune.0608",
+      "level": "commune",
+      "name": "Reisdorf",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0609",
+      "id": "lu.commune.0609",
+      "level": "commune",
+      "name": "Schieren",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0610",
+      "id": "lu.commune.0610",
+      "level": "commune",
+      "name": "Vallée de l'Ernz",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0701",
+      "id": "lu.commune.0701",
+      "level": "commune",
+      "name": "Beckerich",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0702",
+      "id": "lu.commune.0702",
+      "level": "commune",
+      "name": "Préizerdaul",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0703",
+      "id": "lu.commune.0703",
+      "level": "commune",
+      "name": "Ell",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0704",
+      "id": "lu.commune.0704",
+      "level": "commune",
+      "name": "Rambrouch",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0706",
+      "id": "lu.commune.0706",
+      "level": "commune",
+      "name": "Redange",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0707",
+      "id": "lu.commune.0707",
+      "level": "commune",
+      "name": "Saeul",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0708",
+      "id": "lu.commune.0708",
+      "level": "commune",
+      "name": "Useldange",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0709",
+      "id": "lu.commune.0709",
+      "level": "commune",
+      "name": "Vichten",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0711",
+      "id": "lu.commune.0711",
+      "level": "commune",
+      "name": "Groussbus-Wal",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0801",
+      "id": "lu.commune.0801",
+      "level": "commune",
+      "name": "Boulaide",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0802",
+      "id": "lu.commune.0802",
+      "level": "commune",
+      "name": "Esch-sur-Sûre",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0804",
+      "id": "lu.commune.0804",
+      "level": "commune",
+      "name": "Goesdorf",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0805",
+      "id": "lu.commune.0805",
+      "level": "commune",
+      "name": "Kiischpelt",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0806",
+      "id": "lu.commune.0806",
+      "level": "commune",
+      "name": "Lac de la Haute-Sûre",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0807",
+      "id": "lu.commune.0807",
+      "level": "commune",
+      "name": "Wiltz",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0808",
+      "id": "lu.commune.0808",
+      "level": "commune",
+      "name": "Winseler",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0901",
+      "id": "lu.commune.0901",
+      "level": "commune",
+      "name": "Tandel",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0902",
+      "id": "lu.commune.0902",
+      "level": "commune",
+      "name": "Putscheid",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "0903",
+      "id": "lu.commune.0903",
+      "level": "commune",
+      "name": "Vianden",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1001",
+      "id": "lu.commune.1001",
+      "level": "commune",
+      "name": "Beaufort",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1002",
+      "id": "lu.commune.1002",
+      "level": "commune",
+      "name": "Bech",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1003",
+      "id": "lu.commune.1003",
+      "level": "commune",
+      "name": "Berdorf",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1004",
+      "id": "lu.commune.1004",
+      "level": "commune",
+      "name": "Consdorf",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1005",
+      "id": "lu.commune.1005",
+      "level": "commune",
+      "name": "Echternach",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1006",
+      "id": "lu.commune.1006",
+      "level": "commune",
+      "name": "Rosport-Mompach",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1008",
+      "id": "lu.commune.1008",
+      "level": "commune",
+      "name": "Waldbillig",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1101",
+      "id": "lu.commune.1101",
+      "level": "commune",
+      "name": "Betzdorf",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1102",
+      "id": "lu.commune.1102",
+      "level": "commune",
+      "name": "Biwer",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1103",
+      "id": "lu.commune.1103",
+      "level": "commune",
+      "name": "Flaxweiler",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1104",
+      "id": "lu.commune.1104",
+      "level": "commune",
+      "name": "Grevenmacher",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1105",
+      "id": "lu.commune.1105",
+      "level": "commune",
+      "name": "Junglinster",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1106",
+      "id": "lu.commune.1106",
+      "level": "commune",
+      "name": "Manternach",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1107",
+      "id": "lu.commune.1107",
+      "level": "commune",
+      "name": "Mertert",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1108",
+      "id": "lu.commune.1108",
+      "level": "commune",
+      "name": "Wormeldange",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1202",
+      "id": "lu.commune.1202",
+      "level": "commune",
+      "name": "Dalheim",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1203",
+      "id": "lu.commune.1203",
+      "level": "commune",
+      "name": "Lenningen",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1204",
+      "id": "lu.commune.1204",
+      "level": "commune",
+      "name": "Mondorf-les-Bains",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1205",
+      "id": "lu.commune.1205",
+      "level": "commune",
+      "name": "Remich",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1206",
+      "id": "lu.commune.1206",
+      "level": "commune",
+      "name": "Schengen",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1207",
+      "id": "lu.commune.1207",
+      "level": "commune",
+      "name": "Stadtbredimus",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    },
+    {
+      "code": "1209",
+      "id": "lu.commune.1209",
+      "level": "commune",
+      "name": "Bous-Waldbredimus",
+      "set_id": "lu-communes",
+      "valid_from": "2023-09-01"
+    }
+  ],
+  "source_id": "statec-lau-codes",
+  "supersedes": [],
+  "title": "Luxembourg communes (as of 1 September 2023)",
+  "valid_from": "2023-09-01"
+}

@@ -9,26 +9,37 @@ licence:
   url: https://creativecommons.org/publicdomain/zero/1.0/
   attribution: 'Source: STATEC (LUSTAT)'
   notes: >-
-    Recorded from the architecture review dated 2026-08-16 and NOT yet verified
-    against the individual distribution page. Re-read the distribution before the
-    first publication: the distribution wins, never a blanket portal assumption.
-    CC0 data still gets attribution here, as good public-data practice.
+    Verified 2026-08-19 by reading the producer's own terms at
+    https://statistiques.public.lu/fr/support/notice.html. Section "Open Data et
+    propriété intellectuelle (Copyright)" publishes STATEC content "sans
+    restriction, sous les termes du Transfert universel dans le Domaine Public
+    Creative Commons CC0 1.0". The CGU on that same page explicitly names "le
+    site web statistiques.public.lu et la base de données lustat.statec.lu", so
+    the grant reaches this distribution rather than being inferred from a portal.
+    Corroborated by https://data.public.lu/api/1/datasets/api-de-la-base-de-donnees-lustat/,
+    which records license "cc-zero" for this exact API dataset.
 
-terms_checked_at: '2026-08-16'
+    Two limits a future re-checker must keep in mind. (1) The grant is worded
+    "sauf indication contraire", so it is a default rather than a per-dataflow
+    statement; the DF_X021 dataflow and DSD carry no contrary rights annotation,
+    which was checked. (2) There is no licence field inside the SDMX payload
+    itself — the terms attach via the site-wide notice, not the API response.
+    CC0 requires no attribution; STATEC requests it as a goodwill guideline and
+    LëtzScan attributes anyway, per DATA_LICENSES rule 3.
+
+terms_checked_at: '2026-08-19'
 
 # LUSTAT dataflows are released on their own schedules (monthly to annual), so
-# cadence is declared per dataset once the first dataflow is pinned.
+# cadence is declared per dataset once the first dataflow is pinned. DF_X021 is
+# annual; see catalog/datasets/statec-lustat.population-by-commune.yaml.
 cadence: irregular
 
 connector: statec-lustat
-status: draft
-status_reason: >-
-  No connector implemented yet. This entry exists so the first vertical slice —
-  population by commune — has a reviewed source to start from.
+status: active
 
 coverage: >-
   Luxembourg. Geographic detail varies by dataflow; some series are national
-  only, others reach commune level.
+  only, others reach commune level. 907 dataflows were listed on 2026-08-19.
 
 quality_rules:
   - geo_codes_resolve_in_geography_set
@@ -36,6 +47,20 @@ quality_rules:
   - periods_parse_as_iso
 
 notes: >-
+  SDMX 2.1 REST (.Stat Suite / NSI Web Service). The service root is
+  /rest/<resource>; a bare /rest/ returns 404. Structure and data are reachable
+  without a key: dataflows at
+  https://lustat.statec.lu/rest/dataflow/LU1/all/latest.
+
+  Formats: SDMX-CSV via ?format=csv, and SDMX-JSON **version 2** via
+  ?format=jsondata. Requesting Accept: application/vnd.sdmx.data+json;version=1.0.0
+  returns HTTP 406 — the server advertises the versions it will serve in the 406
+  body. LëtzScan reads CSV, which diffs legibly when a fixture is re-recorded.
+
+  `labels=id` (codes rather than display names) is a media-type parameter on the
+  Accept header, not a query parameter: passing ?labels=id returns HTTP 422 with
+  the list of parameters the service does accept.
+
   Pin exact dataflow and dimension identifiers in the dataset entry rather than
   in code. SDMX dimension ordering changes are a schema change and must fail the
   build, not silently reshape a series.

@@ -1,0 +1,1068 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--NSI Web Service v8.19.8.1-->
+<message:Structure xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common">
+  <message:Header>
+    <message:ID>IDREF92242</message:ID>
+    <message:Test>false</message:Test>
+    <message:Prepared>2026-08-19T15:04:10.5756157+00:00</message:Prepared>
+    <message:Sender id="Unknown" />
+    <message:Receiver id="Unknown" />
+  </message:Header>
+  <message:Structures>
+    <structure:Codelists>
+      <structure:Codelist id="CL_CANTON_COMMUNE" agencyID="LU1" version="1.0" isFinal="true">
+        <common:Name xml:lang="en">CL_CANTON_COMMUNE</common:Name>
+        <common:Name xml:lang="fr">CL_CANTON_COMMUNE</common:Name>
+        <common:Description xml:lang="fr">Codelist regroupant les cantons LAU1 et communes LAU2</common:Description>
+        <structure:Code id="T">
+          <common:Name xml:lang="en">Total</common:Name>
+          <common:Name xml:lang="fr">Total</common:Name>
+          <common:Description xml:lang="en">Total</common:Description>
+          <common:Description xml:lang="fr">Total</common:Description>
+        </structure:Code>
+        <structure:Code id="C01">
+          <common:Name xml:lang="en">Capellen</common:Name>
+          <common:Name xml:lang="fr">Capellen</common:Name>
+          <common:Description xml:lang="en">Capellen</common:Description>
+          <common:Description xml:lang="fr">Capellen</common:Description>
+          <structure:Parent>
+            <Ref id="T" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="C02">
+          <common:Name xml:lang="en">Esch</common:Name>
+          <common:Name xml:lang="fr">Esch</common:Name>
+          <common:Description xml:lang="en">Esch</common:Description>
+          <common:Description xml:lang="fr">Esch</common:Description>
+          <structure:Parent>
+            <Ref id="T" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="C03">
+          <common:Name xml:lang="en">Luxembourg</common:Name>
+          <common:Name xml:lang="fr">Luxembourg</common:Name>
+          <common:Description xml:lang="en">Luxembourg</common:Description>
+          <common:Description xml:lang="fr">Luxembourg</common:Description>
+          <structure:Parent>
+            <Ref id="T" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="C04">
+          <common:Name xml:lang="en">Mersch</common:Name>
+          <common:Name xml:lang="fr">Mersch</common:Name>
+          <common:Description xml:lang="en">Mersch</common:Description>
+          <common:Description xml:lang="fr">Mersch</common:Description>
+          <structure:Parent>
+            <Ref id="T" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="C05">
+          <common:Name xml:lang="en">Clervaux</common:Name>
+          <common:Name xml:lang="fr">Clervaux</common:Name>
+          <common:Description xml:lang="en">Clervaux</common:Description>
+          <common:Description xml:lang="fr">Clervaux</common:Description>
+          <structure:Parent>
+            <Ref id="T" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="C06">
+          <common:Name xml:lang="en">Diekirch</common:Name>
+          <common:Name xml:lang="fr">Diekirch</common:Name>
+          <common:Description xml:lang="en">Diekirch</common:Description>
+          <common:Description xml:lang="fr">Diekirch</common:Description>
+          <structure:Parent>
+            <Ref id="T" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="C07">
+          <common:Name xml:lang="en">Redange</common:Name>
+          <common:Name xml:lang="fr">Redange</common:Name>
+          <common:Description xml:lang="en">Redange</common:Description>
+          <common:Description xml:lang="fr">Redange</common:Description>
+          <structure:Parent>
+            <Ref id="T" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="C08">
+          <common:Name xml:lang="en">Wiltz</common:Name>
+          <common:Name xml:lang="fr">Wiltz</common:Name>
+          <common:Description xml:lang="en">Wiltz</common:Description>
+          <common:Description xml:lang="fr">Wiltz</common:Description>
+          <structure:Parent>
+            <Ref id="T" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="C09">
+          <common:Name xml:lang="en">Vianden</common:Name>
+          <common:Name xml:lang="fr">Vianden</common:Name>
+          <common:Description xml:lang="en">Vianden</common:Description>
+          <common:Description xml:lang="fr">Vianden</common:Description>
+          <structure:Parent>
+            <Ref id="T" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="C10">
+          <common:Name xml:lang="en">Echternach</common:Name>
+          <common:Name xml:lang="fr">Echternach</common:Name>
+          <common:Description xml:lang="en">Echternach</common:Description>
+          <common:Description xml:lang="fr">Echternach</common:Description>
+          <structure:Parent>
+            <Ref id="T" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="C11">
+          <common:Name xml:lang="en">Grevenmacher</common:Name>
+          <common:Name xml:lang="fr">Grevenmacher</common:Name>
+          <common:Description xml:lang="en">Grevenmacher</common:Description>
+          <common:Description xml:lang="fr">Grevenmacher</common:Description>
+          <structure:Parent>
+            <Ref id="T" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="C12">
+          <common:Name xml:lang="en">Remich</common:Name>
+          <common:Name xml:lang="fr">Remich</common:Name>
+          <common:Description xml:lang="en">Remich</common:Description>
+          <common:Description xml:lang="fr">Remich</common:Description>
+          <structure:Parent>
+            <Ref id="T" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0101">
+          <common:Name xml:lang="en">Dippach</common:Name>
+          <common:Name xml:lang="fr">Dippach</common:Name>
+          <common:Description xml:lang="en">Dippach</common:Description>
+          <common:Description xml:lang="fr">Dippach</common:Description>
+          <structure:Parent>
+            <Ref id="C01" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0102">
+          <common:Name xml:lang="en">Garnich</common:Name>
+          <common:Name xml:lang="fr">Garnich</common:Name>
+          <common:Description xml:lang="en">Garnich</common:Description>
+          <common:Description xml:lang="fr">Garnich</common:Description>
+          <structure:Parent>
+            <Ref id="C01" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0103">
+          <common:Name xml:lang="en">Habscht</common:Name>
+          <common:Name xml:lang="fr">Habscht</common:Name>
+          <common:Description xml:lang="en">Habscht</common:Description>
+          <common:Description xml:lang="fr">Habscht</common:Description>
+          <structure:Parent>
+            <Ref id="C01" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0104">
+          <common:Name xml:lang="en">Käerjeng</common:Name>
+          <common:Name xml:lang="fr">Käerjeng</common:Name>
+          <common:Description xml:lang="en">Käerjeng</common:Description>
+          <common:Description xml:lang="fr">Käerjeng</common:Description>
+          <structure:Parent>
+            <Ref id="C01" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0105">
+          <common:Name xml:lang="en">Kehlen</common:Name>
+          <common:Name xml:lang="fr">Kehlen</common:Name>
+          <common:Description xml:lang="en">Kehlen</common:Description>
+          <common:Description xml:lang="fr">Kehlen</common:Description>
+          <structure:Parent>
+            <Ref id="C01" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0106">
+          <common:Name xml:lang="en">Koerich</common:Name>
+          <common:Name xml:lang="fr">Koerich</common:Name>
+          <common:Description xml:lang="en">Koerich</common:Description>
+          <common:Description xml:lang="fr">Koerich</common:Description>
+          <structure:Parent>
+            <Ref id="C01" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0107">
+          <common:Name xml:lang="en">Kopstal</common:Name>
+          <common:Name xml:lang="fr">Kopstal</common:Name>
+          <common:Description xml:lang="en">Kopstal</common:Description>
+          <common:Description xml:lang="fr">Kopstal</common:Description>
+          <structure:Parent>
+            <Ref id="C01" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0108">
+          <common:Name xml:lang="en">Mamer</common:Name>
+          <common:Name xml:lang="fr">Mamer</common:Name>
+          <common:Description xml:lang="en">Mamer</common:Description>
+          <common:Description xml:lang="fr">Mamer</common:Description>
+          <structure:Parent>
+            <Ref id="C01" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0110">
+          <common:Name xml:lang="en">Steinfort</common:Name>
+          <common:Name xml:lang="fr">Steinfort</common:Name>
+          <common:Description xml:lang="en">Steinfort</common:Description>
+          <common:Description xml:lang="fr">Steinfort</common:Description>
+          <structure:Parent>
+            <Ref id="C01" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0201">
+          <common:Name xml:lang="en">Bettembourg</common:Name>
+          <common:Name xml:lang="fr">Bettembourg</common:Name>
+          <common:Description xml:lang="en">Bettembourg</common:Description>
+          <common:Description xml:lang="fr">Bettembourg</common:Description>
+          <structure:Parent>
+            <Ref id="C02" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0202">
+          <common:Name xml:lang="en">Differdange</common:Name>
+          <common:Name xml:lang="fr">Differdange</common:Name>
+          <common:Description xml:lang="en">Differdange</common:Description>
+          <common:Description xml:lang="fr">Differdange</common:Description>
+          <structure:Parent>
+            <Ref id="C02" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0203">
+          <common:Name xml:lang="en">Dudelange</common:Name>
+          <common:Name xml:lang="fr">Dudelange</common:Name>
+          <common:Description xml:lang="en">Dudelange</common:Description>
+          <common:Description xml:lang="fr">Dudelange</common:Description>
+          <structure:Parent>
+            <Ref id="C02" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0204">
+          <common:Name xml:lang="en">Esch-sur-Alzette</common:Name>
+          <common:Name xml:lang="fr">Esch-sur-Alzette</common:Name>
+          <common:Description xml:lang="en">Esch-sur-Alzette</common:Description>
+          <common:Description xml:lang="fr">Esch-sur-Alzette</common:Description>
+          <structure:Parent>
+            <Ref id="C02" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0205">
+          <common:Name xml:lang="en">Frisange</common:Name>
+          <common:Name xml:lang="fr">Frisange</common:Name>
+          <common:Description xml:lang="en">Frisange</common:Description>
+          <common:Description xml:lang="fr">Frisange</common:Description>
+          <structure:Parent>
+            <Ref id="C02" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0206">
+          <common:Name xml:lang="en">Kayl</common:Name>
+          <common:Name xml:lang="fr">Kayl</common:Name>
+          <common:Description xml:lang="en">Kayl</common:Description>
+          <common:Description xml:lang="fr">Kayl</common:Description>
+          <structure:Parent>
+            <Ref id="C02" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0207">
+          <common:Name xml:lang="en">Leudelange</common:Name>
+          <common:Name xml:lang="fr">Leudelange</common:Name>
+          <common:Description xml:lang="en">Leudelange</common:Description>
+          <common:Description xml:lang="fr">Leudelange</common:Description>
+          <structure:Parent>
+            <Ref id="C02" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0208">
+          <common:Name xml:lang="en">Mondercange</common:Name>
+          <common:Name xml:lang="fr">Mondercange</common:Name>
+          <common:Description xml:lang="en">Mondercange</common:Description>
+          <common:Description xml:lang="fr">Mondercange</common:Description>
+          <structure:Parent>
+            <Ref id="C02" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0209">
+          <common:Name xml:lang="en">Pétange</common:Name>
+          <common:Name xml:lang="fr">Pétange</common:Name>
+          <common:Description xml:lang="en">Pétange</common:Description>
+          <common:Description xml:lang="fr">Pétange</common:Description>
+          <structure:Parent>
+            <Ref id="C02" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0210">
+          <common:Name xml:lang="en">Reckange-sur-Mess</common:Name>
+          <common:Name xml:lang="fr">Reckange-sur-Mess</common:Name>
+          <common:Description xml:lang="en">Reckange-sur-Mess</common:Description>
+          <common:Description xml:lang="fr">Reckange-sur-Mess</common:Description>
+          <structure:Parent>
+            <Ref id="C02" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0211">
+          <common:Name xml:lang="en">Roeser</common:Name>
+          <common:Name xml:lang="fr">Roeser</common:Name>
+          <common:Description xml:lang="en">Roeser</common:Description>
+          <common:Description xml:lang="fr">Roeser</common:Description>
+          <structure:Parent>
+            <Ref id="C02" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0212">
+          <common:Name xml:lang="en">Rumelange</common:Name>
+          <common:Name xml:lang="fr">Rumelange</common:Name>
+          <common:Description xml:lang="en">Rumelange</common:Description>
+          <common:Description xml:lang="fr">Rumelange</common:Description>
+          <structure:Parent>
+            <Ref id="C02" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0213">
+          <common:Name xml:lang="en">Sanem</common:Name>
+          <common:Name xml:lang="fr">Sanem</common:Name>
+          <common:Description xml:lang="en">Sanem</common:Description>
+          <common:Description xml:lang="fr">Sanem</common:Description>
+          <structure:Parent>
+            <Ref id="C02" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0214">
+          <common:Name xml:lang="en">Schifflange</common:Name>
+          <common:Name xml:lang="fr">Schifflange</common:Name>
+          <common:Description xml:lang="en">Schifflange</common:Description>
+          <common:Description xml:lang="fr">Schifflange</common:Description>
+          <structure:Parent>
+            <Ref id="C02" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0301">
+          <common:Name xml:lang="en">Bertrange</common:Name>
+          <common:Name xml:lang="fr">Bertrange</common:Name>
+          <common:Description xml:lang="en">Bertrange</common:Description>
+          <common:Description xml:lang="fr">Bertrange</common:Description>
+          <structure:Parent>
+            <Ref id="C03" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0302">
+          <common:Name xml:lang="en">Contern</common:Name>
+          <common:Name xml:lang="fr">Contern</common:Name>
+          <common:Description xml:lang="en">Contern</common:Description>
+          <common:Description xml:lang="fr">Contern</common:Description>
+          <structure:Parent>
+            <Ref id="C03" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0303">
+          <common:Name xml:lang="en">Hesperange</common:Name>
+          <common:Name xml:lang="fr">Hesperange</common:Name>
+          <common:Description xml:lang="en">Hesperange</common:Description>
+          <common:Description xml:lang="fr">Hesperange</common:Description>
+          <structure:Parent>
+            <Ref id="C03" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0304">
+          <common:Name xml:lang="en">Luxembourg</common:Name>
+          <common:Name xml:lang="fr">Luxembourg</common:Name>
+          <common:Description xml:lang="en">Luxembourg</common:Description>
+          <common:Description xml:lang="fr">Luxembourg</common:Description>
+          <structure:Parent>
+            <Ref id="C03" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0305">
+          <common:Name xml:lang="en">Niederanven</common:Name>
+          <common:Name xml:lang="fr">Niederanven</common:Name>
+          <common:Description xml:lang="en">Niederanven</common:Description>
+          <common:Description xml:lang="fr">Niederanven</common:Description>
+          <structure:Parent>
+            <Ref id="C03" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0306">
+          <common:Name xml:lang="en">Sandweiler</common:Name>
+          <common:Name xml:lang="fr">Sandweiler</common:Name>
+          <common:Description xml:lang="en">Sandweiler</common:Description>
+          <common:Description xml:lang="fr">Sandweiler</common:Description>
+          <structure:Parent>
+            <Ref id="C03" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0307">
+          <common:Name xml:lang="en">Schuttrange</common:Name>
+          <common:Name xml:lang="fr">Schuttrange</common:Name>
+          <common:Description xml:lang="en">Schuttrange</common:Description>
+          <common:Description xml:lang="fr">Schuttrange</common:Description>
+          <structure:Parent>
+            <Ref id="C03" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0308">
+          <common:Name xml:lang="en">Steinsel</common:Name>
+          <common:Name xml:lang="fr">Steinsel</common:Name>
+          <common:Description xml:lang="en">Steinsel</common:Description>
+          <common:Description xml:lang="fr">Steinsel</common:Description>
+          <structure:Parent>
+            <Ref id="C03" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0309">
+          <common:Name xml:lang="en">Strassen</common:Name>
+          <common:Name xml:lang="fr">Strassen</common:Name>
+          <common:Description xml:lang="en">Strassen</common:Description>
+          <common:Description xml:lang="fr">Strassen</common:Description>
+          <structure:Parent>
+            <Ref id="C03" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0310">
+          <common:Name xml:lang="en">Walferdange</common:Name>
+          <common:Name xml:lang="fr">Walferdange</common:Name>
+          <common:Description xml:lang="en">Walferdange</common:Description>
+          <common:Description xml:lang="fr">Walferdange</common:Description>
+          <structure:Parent>
+            <Ref id="C03" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0311">
+          <common:Name xml:lang="en">Weiler-la-Tour</common:Name>
+          <common:Name xml:lang="fr">Weiler-la-Tour</common:Name>
+          <common:Description xml:lang="en">Weiler-la-Tour</common:Description>
+          <common:Description xml:lang="fr">Weiler-la-Tour</common:Description>
+          <structure:Parent>
+            <Ref id="C03" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0401">
+          <common:Name xml:lang="en">Colmar-Berg</common:Name>
+          <common:Name xml:lang="fr">Colmar-Berg</common:Name>
+          <common:Description xml:lang="en">Colmar-Berg</common:Description>
+          <common:Description xml:lang="fr">Colmar-Berg</common:Description>
+          <structure:Parent>
+            <Ref id="C04" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0402">
+          <common:Name xml:lang="en">Bissen</common:Name>
+          <common:Name xml:lang="fr">Bissen</common:Name>
+          <common:Description xml:lang="en">Bissen</common:Description>
+          <common:Description xml:lang="fr">Bissen</common:Description>
+          <structure:Parent>
+            <Ref id="C04" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0403">
+          <common:Name xml:lang="en">Helperknapp</common:Name>
+          <common:Name xml:lang="fr">Helperknapp</common:Name>
+          <common:Description xml:lang="en">Helperknapp</common:Description>
+          <common:Description xml:lang="fr">Helperknapp</common:Description>
+          <structure:Parent>
+            <Ref id="C04" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0404">
+          <common:Name xml:lang="en">Fischbach</common:Name>
+          <common:Name xml:lang="fr">Fischbach</common:Name>
+          <common:Description xml:lang="en">Fischbach</common:Description>
+          <common:Description xml:lang="fr">Fischbach</common:Description>
+          <structure:Parent>
+            <Ref id="C04" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0405">
+          <common:Name xml:lang="en">Heffingen</common:Name>
+          <common:Name xml:lang="fr">Heffingen</common:Name>
+          <common:Description xml:lang="en">Heffingen</common:Description>
+          <common:Description xml:lang="fr">Heffingen</common:Description>
+          <structure:Parent>
+            <Ref id="C04" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0406">
+          <common:Name xml:lang="en">Larochette</common:Name>
+          <common:Name xml:lang="fr">Larochette</common:Name>
+          <common:Description xml:lang="en">Larochette</common:Description>
+          <common:Description xml:lang="fr">Larochette</common:Description>
+          <structure:Parent>
+            <Ref id="C04" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0407">
+          <common:Name xml:lang="en">Lintgen</common:Name>
+          <common:Name xml:lang="fr">Lintgen</common:Name>
+          <common:Description xml:lang="en">Lintgen</common:Description>
+          <common:Description xml:lang="fr">Lintgen</common:Description>
+          <structure:Parent>
+            <Ref id="C04" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0408">
+          <common:Name xml:lang="en">Lorentzweiler</common:Name>
+          <common:Name xml:lang="fr">Lorentzweiler</common:Name>
+          <common:Description xml:lang="en">Lorentzweiler</common:Description>
+          <common:Description xml:lang="fr">Lorentzweiler</common:Description>
+          <structure:Parent>
+            <Ref id="C04" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0409">
+          <common:Name xml:lang="en">Mersch</common:Name>
+          <common:Name xml:lang="fr">Mersch</common:Name>
+          <common:Description xml:lang="en">Mersch</common:Description>
+          <common:Description xml:lang="fr">Mersch</common:Description>
+          <structure:Parent>
+            <Ref id="C04" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0410">
+          <common:Name xml:lang="en">Nommern</common:Name>
+          <common:Name xml:lang="fr">Nommern</common:Name>
+          <common:Description xml:lang="en">Nommern</common:Description>
+          <common:Description xml:lang="fr">Nommern</common:Description>
+          <structure:Parent>
+            <Ref id="C04" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0501">
+          <common:Name xml:lang="en">Clervaux</common:Name>
+          <common:Name xml:lang="fr">Clervaux</common:Name>
+          <common:Description xml:lang="en">Clervaux</common:Description>
+          <common:Description xml:lang="fr">Clervaux</common:Description>
+          <structure:Parent>
+            <Ref id="C05" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0502">
+          <common:Name xml:lang="en">Wincrange</common:Name>
+          <common:Name xml:lang="fr">Wincrange</common:Name>
+          <common:Description xml:lang="en">Wincrange</common:Description>
+          <common:Description xml:lang="fr">Wincrange</common:Description>
+          <structure:Parent>
+            <Ref id="C05" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0503">
+          <common:Name xml:lang="en">Parc Hosingen</common:Name>
+          <common:Name xml:lang="fr">Parc Hosingen</common:Name>
+          <common:Description xml:lang="en">Parc Hosingen</common:Description>
+          <common:Description xml:lang="fr">Parc Hosingen</common:Description>
+          <structure:Parent>
+            <Ref id="C05" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0504">
+          <common:Name xml:lang="en">Troisvierges</common:Name>
+          <common:Name xml:lang="fr">Troisvierges</common:Name>
+          <common:Description xml:lang="en">Troisvierges</common:Description>
+          <common:Description xml:lang="fr">Troisvierges</common:Description>
+          <structure:Parent>
+            <Ref id="C05" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0505">
+          <common:Name xml:lang="en">Weiswampach</common:Name>
+          <common:Name xml:lang="fr">Weiswampach</common:Name>
+          <common:Description xml:lang="en">Weiswampach</common:Description>
+          <common:Description xml:lang="fr">Weiswampach</common:Description>
+          <structure:Parent>
+            <Ref id="C05" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0601">
+          <common:Name xml:lang="en">Bettendorf</common:Name>
+          <common:Name xml:lang="fr">Bettendorf</common:Name>
+          <common:Description xml:lang="en">Bettendorf</common:Description>
+          <common:Description xml:lang="fr">Bettendorf</common:Description>
+          <structure:Parent>
+            <Ref id="C06" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0602">
+          <common:Name xml:lang="en">Bourscheid</common:Name>
+          <common:Name xml:lang="fr">Bourscheid</common:Name>
+          <common:Description xml:lang="en">Bourscheid</common:Description>
+          <common:Description xml:lang="fr">Bourscheid</common:Description>
+          <structure:Parent>
+            <Ref id="C06" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0603">
+          <common:Name xml:lang="en">Diekirch</common:Name>
+          <common:Name xml:lang="fr">Diekirch</common:Name>
+          <common:Description xml:lang="en">Diekirch</common:Description>
+          <common:Description xml:lang="fr">Diekirch</common:Description>
+          <structure:Parent>
+            <Ref id="C06" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0604">
+          <common:Name xml:lang="en">Erpeldange-sur-Sûre</common:Name>
+          <common:Name xml:lang="fr">Erpeldange-sur-Sûre</common:Name>
+          <common:Description xml:lang="en">Erpeldange-sur-Sûre</common:Description>
+          <common:Description xml:lang="fr">Erpeldange-sur-Sûre</common:Description>
+          <structure:Parent>
+            <Ref id="C06" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0605">
+          <common:Name xml:lang="en">Ettelbruck</common:Name>
+          <common:Name xml:lang="fr">Ettelbruck</common:Name>
+          <common:Description xml:lang="en">Ettelbruck</common:Description>
+          <common:Description xml:lang="fr">Ettelbruck</common:Description>
+          <structure:Parent>
+            <Ref id="C06" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0606">
+          <common:Name xml:lang="en">Feulen</common:Name>
+          <common:Name xml:lang="fr">Feulen</common:Name>
+          <common:Description xml:lang="en">Feulen</common:Description>
+          <common:Description xml:lang="fr">Feulen</common:Description>
+          <structure:Parent>
+            <Ref id="C06" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0607">
+          <common:Name xml:lang="en">Mertzig</common:Name>
+          <common:Name xml:lang="fr">Mertzig</common:Name>
+          <common:Description xml:lang="en">Mertzig</common:Description>
+          <common:Description xml:lang="fr">Mertzig</common:Description>
+          <structure:Parent>
+            <Ref id="C06" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0608">
+          <common:Name xml:lang="en">Reisdorf</common:Name>
+          <common:Name xml:lang="fr">Reisdorf</common:Name>
+          <common:Description xml:lang="en">Reisdorf</common:Description>
+          <common:Description xml:lang="fr">Reisdorf</common:Description>
+          <structure:Parent>
+            <Ref id="C06" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0609">
+          <common:Name xml:lang="en">Schieren</common:Name>
+          <common:Name xml:lang="fr">Schieren</common:Name>
+          <common:Description xml:lang="en">Schieren</common:Description>
+          <common:Description xml:lang="fr">Schieren</common:Description>
+          <structure:Parent>
+            <Ref id="C06" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0610">
+          <common:Name xml:lang="en">Vallée de l'Ernz</common:Name>
+          <common:Name xml:lang="fr">Vallée de l'Ernz</common:Name>
+          <common:Description xml:lang="en">Vallée de l'Ernz</common:Description>
+          <common:Description xml:lang="fr">Vallée de l'Ernz</common:Description>
+          <structure:Parent>
+            <Ref id="C06" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0701">
+          <common:Name xml:lang="en">Beckerich</common:Name>
+          <common:Name xml:lang="fr">Beckerich</common:Name>
+          <common:Description xml:lang="en">Beckerich</common:Description>
+          <common:Description xml:lang="fr">Beckerich</common:Description>
+          <structure:Parent>
+            <Ref id="C07" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0702">
+          <common:Name xml:lang="en">Préizerdaul</common:Name>
+          <common:Name xml:lang="fr">Préizerdaul</common:Name>
+          <common:Description xml:lang="en">Préizerdaul</common:Description>
+          <common:Description xml:lang="fr">Préizerdaul</common:Description>
+          <structure:Parent>
+            <Ref id="C07" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0703">
+          <common:Name xml:lang="en">Ell</common:Name>
+          <common:Name xml:lang="fr">Ell</common:Name>
+          <common:Description xml:lang="en">Ell</common:Description>
+          <common:Description xml:lang="fr">Ell</common:Description>
+          <structure:Parent>
+            <Ref id="C07" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0704">
+          <common:Name xml:lang="en">Rambrouch</common:Name>
+          <common:Name xml:lang="fr">Rambrouch</common:Name>
+          <common:Description xml:lang="en">Rambrouch</common:Description>
+          <common:Description xml:lang="fr">Rambrouch</common:Description>
+          <structure:Parent>
+            <Ref id="C07" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0705">
+          <common:Name xml:lang="en">Grosbous</common:Name>
+          <common:Description xml:lang="en">Grosbous</common:Description>
+          <structure:Parent>
+            <Ref id="C07" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0706">
+          <common:Name xml:lang="en">Redange/Attert</common:Name>
+          <common:Name xml:lang="fr">Redange</common:Name>
+          <common:Description xml:lang="en">Redange/Attert</common:Description>
+          <common:Description xml:lang="fr">Redange</common:Description>
+          <structure:Parent>
+            <Ref id="C07" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0707">
+          <common:Name xml:lang="en">Saeul</common:Name>
+          <common:Name xml:lang="fr">Saeul</common:Name>
+          <common:Description xml:lang="en">Saeul</common:Description>
+          <common:Description xml:lang="fr">Saeul</common:Description>
+          <structure:Parent>
+            <Ref id="C07" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0708">
+          <common:Name xml:lang="en">Useldange</common:Name>
+          <common:Name xml:lang="fr">Useldange</common:Name>
+          <common:Description xml:lang="en">Useldange</common:Description>
+          <common:Description xml:lang="fr">Useldange</common:Description>
+          <structure:Parent>
+            <Ref id="C07" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0709">
+          <common:Name xml:lang="en">Vichten</common:Name>
+          <common:Name xml:lang="fr">Vichten</common:Name>
+          <common:Description xml:lang="en">Vichten</common:Description>
+          <common:Description xml:lang="fr">Vichten</common:Description>
+          <structure:Parent>
+            <Ref id="C07" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0710">
+          <common:Name xml:lang="en">Wahl</common:Name>
+          <common:Name xml:lang="fr">Wahl</common:Name>
+          <common:Description xml:lang="en">Wahl</common:Description>
+          <common:Description xml:lang="fr">Wahl</common:Description>
+          <structure:Parent>
+            <Ref id="C07" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0711">
+          <common:Name xml:lang="en">Groussbus-Wal</common:Name>
+          <common:Name xml:lang="fr">Groussbus-Wal</common:Name>
+          <common:Description xml:lang="en">Groussbus-Wal</common:Description>
+          <common:Description xml:lang="fr">Groussbus-Wal</common:Description>
+          <structure:Parent>
+            <Ref id="C07" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0801">
+          <common:Name xml:lang="en">Boulaide</common:Name>
+          <common:Name xml:lang="fr">Boulaide</common:Name>
+          <common:Description xml:lang="en">Boulaide</common:Description>
+          <common:Description xml:lang="fr">Boulaide</common:Description>
+          <structure:Parent>
+            <Ref id="C08" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0802">
+          <common:Name xml:lang="en">Esch-sur-Sûre</common:Name>
+          <common:Name xml:lang="fr">Esch-sur-Sûre</common:Name>
+          <common:Description xml:lang="en">Esch-sur-Sûre</common:Description>
+          <common:Description xml:lang="fr">Esch-sur-Sûre</common:Description>
+          <structure:Parent>
+            <Ref id="C08" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0804">
+          <common:Name xml:lang="en">Goesdorf</common:Name>
+          <common:Name xml:lang="fr">Goesdorf</common:Name>
+          <common:Description xml:lang="en">Goesdorf</common:Description>
+          <common:Description xml:lang="fr">Goesdorf</common:Description>
+          <structure:Parent>
+            <Ref id="C08" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0805">
+          <common:Name xml:lang="en">Kiischpelt</common:Name>
+          <common:Name xml:lang="fr">Kiischpelt</common:Name>
+          <common:Description xml:lang="en">Kiischpelt</common:Description>
+          <common:Description xml:lang="fr">Kiischpelt</common:Description>
+          <structure:Parent>
+            <Ref id="C08" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0806">
+          <common:Name xml:lang="en">Lac de la Haute-Sûre</common:Name>
+          <common:Name xml:lang="fr">Lac de la Haute-Sûre</common:Name>
+          <common:Description xml:lang="en">Lac de la Haute-Sûre</common:Description>
+          <common:Description xml:lang="fr">Lac de la Haute-Sûre</common:Description>
+          <structure:Parent>
+            <Ref id="C08" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0807">
+          <common:Name xml:lang="en">Wiltz</common:Name>
+          <common:Name xml:lang="fr">Wiltz</common:Name>
+          <common:Description xml:lang="en">Wiltz</common:Description>
+          <common:Description xml:lang="fr">Wiltz</common:Description>
+          <structure:Parent>
+            <Ref id="C08" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0808">
+          <common:Name xml:lang="en">Winseler</common:Name>
+          <common:Name xml:lang="fr">Winseler</common:Name>
+          <common:Description xml:lang="en">Winseler</common:Description>
+          <common:Description xml:lang="fr">Winseler</common:Description>
+          <structure:Parent>
+            <Ref id="C08" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0901">
+          <common:Name xml:lang="en">Tandel</common:Name>
+          <common:Name xml:lang="fr">Tandel</common:Name>
+          <common:Description xml:lang="en">Tandel</common:Description>
+          <common:Description xml:lang="fr">Tandel</common:Description>
+          <structure:Parent>
+            <Ref id="C09" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0902">
+          <common:Name xml:lang="en">Putscheid</common:Name>
+          <common:Name xml:lang="fr">Putscheid</common:Name>
+          <common:Description xml:lang="en">Putscheid</common:Description>
+          <common:Description xml:lang="fr">Putscheid</common:Description>
+          <structure:Parent>
+            <Ref id="C09" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="0903">
+          <common:Name xml:lang="en">Vianden</common:Name>
+          <common:Name xml:lang="fr">Vianden</common:Name>
+          <common:Description xml:lang="en">Vianden</common:Description>
+          <common:Description xml:lang="fr">Vianden</common:Description>
+          <structure:Parent>
+            <Ref id="C09" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1001">
+          <common:Name xml:lang="en">Beaufort</common:Name>
+          <common:Name xml:lang="fr">Beaufort</common:Name>
+          <common:Description xml:lang="en">Beaufort</common:Description>
+          <common:Description xml:lang="fr">Beaufort</common:Description>
+          <structure:Parent>
+            <Ref id="C10" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1002">
+          <common:Name xml:lang="en">Bech</common:Name>
+          <common:Name xml:lang="fr">Bech</common:Name>
+          <common:Description xml:lang="en">Bech</common:Description>
+          <common:Description xml:lang="fr">Bech</common:Description>
+          <structure:Parent>
+            <Ref id="C10" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1003">
+          <common:Name xml:lang="en">Berdorf</common:Name>
+          <common:Name xml:lang="fr">Berdorf</common:Name>
+          <common:Description xml:lang="en">Berdorf</common:Description>
+          <common:Description xml:lang="fr">Berdorf</common:Description>
+          <structure:Parent>
+            <Ref id="C10" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1004">
+          <common:Name xml:lang="en">Consdorf</common:Name>
+          <common:Name xml:lang="fr">Consdorf</common:Name>
+          <common:Description xml:lang="en">Consdorf</common:Description>
+          <common:Description xml:lang="fr">Consdorf</common:Description>
+          <structure:Parent>
+            <Ref id="C10" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1005">
+          <common:Name xml:lang="en">Echternach</common:Name>
+          <common:Name xml:lang="fr">Echternach</common:Name>
+          <common:Description xml:lang="en">Echternach</common:Description>
+          <common:Description xml:lang="fr">Echternach</common:Description>
+          <structure:Parent>
+            <Ref id="C10" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1006">
+          <common:Name xml:lang="en">Rosport-Mompach</common:Name>
+          <common:Name xml:lang="fr">Rosport-Mompach</common:Name>
+          <common:Description xml:lang="en">Rosport-Mompach</common:Description>
+          <common:Description xml:lang="fr">Rosport-Mompach</common:Description>
+          <structure:Parent>
+            <Ref id="C10" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1008">
+          <common:Name xml:lang="en">Waldbillig</common:Name>
+          <common:Name xml:lang="fr">Waldbillig</common:Name>
+          <common:Description xml:lang="en">Waldbillig</common:Description>
+          <common:Description xml:lang="fr">Waldbillig</common:Description>
+          <structure:Parent>
+            <Ref id="C10" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1101">
+          <common:Name xml:lang="en">Betzdorf</common:Name>
+          <common:Name xml:lang="fr">Betzdorf</common:Name>
+          <common:Description xml:lang="en">Betzdorf</common:Description>
+          <common:Description xml:lang="fr">Betzdorf</common:Description>
+          <structure:Parent>
+            <Ref id="C11" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1102">
+          <common:Name xml:lang="en">Biwer</common:Name>
+          <common:Name xml:lang="fr">Biwer</common:Name>
+          <common:Description xml:lang="en">Biwer</common:Description>
+          <common:Description xml:lang="fr">Biwer</common:Description>
+          <structure:Parent>
+            <Ref id="C11" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1103">
+          <common:Name xml:lang="en">Flaxweiler</common:Name>
+          <common:Name xml:lang="fr">Flaxweiler</common:Name>
+          <common:Description xml:lang="en">Flaxweiler</common:Description>
+          <common:Description xml:lang="fr">Flaxweiler</common:Description>
+          <structure:Parent>
+            <Ref id="C11" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1104">
+          <common:Name xml:lang="en">Grevenmacher</common:Name>
+          <common:Name xml:lang="fr">Grevenmacher</common:Name>
+          <common:Description xml:lang="en">Grevenmacher</common:Description>
+          <common:Description xml:lang="fr">Grevenmacher</common:Description>
+          <structure:Parent>
+            <Ref id="C11" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1105">
+          <common:Name xml:lang="en">Junglinster</common:Name>
+          <common:Name xml:lang="fr">Junglinster</common:Name>
+          <common:Description xml:lang="en">Junglinster</common:Description>
+          <common:Description xml:lang="fr">Junglinster</common:Description>
+          <structure:Parent>
+            <Ref id="C11" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1106">
+          <common:Name xml:lang="en">Manternach</common:Name>
+          <common:Name xml:lang="fr">Manternach</common:Name>
+          <common:Description xml:lang="en">Manternach</common:Description>
+          <common:Description xml:lang="fr">Manternach</common:Description>
+          <structure:Parent>
+            <Ref id="C11" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1107">
+          <common:Name xml:lang="en">Mertert</common:Name>
+          <common:Name xml:lang="fr">Mertert</common:Name>
+          <common:Description xml:lang="en">Mertert</common:Description>
+          <common:Description xml:lang="fr">Mertert</common:Description>
+          <structure:Parent>
+            <Ref id="C11" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1108">
+          <common:Name xml:lang="en">Wormeldange</common:Name>
+          <common:Name xml:lang="fr">Wormeldange</common:Name>
+          <common:Description xml:lang="en">Wormeldange</common:Description>
+          <common:Description xml:lang="fr">Wormeldange</common:Description>
+          <structure:Parent>
+            <Ref id="C11" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1201">
+          <common:Name xml:lang="en">Bous</common:Name>
+          <common:Name xml:lang="fr">Bous</common:Name>
+          <common:Description xml:lang="en">Bous</common:Description>
+          <common:Description xml:lang="fr">Bous</common:Description>
+          <structure:Parent>
+            <Ref id="C12" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1202">
+          <common:Name xml:lang="en">Dalheim</common:Name>
+          <common:Name xml:lang="fr">Dalheim</common:Name>
+          <common:Description xml:lang="en">Dalheim</common:Description>
+          <common:Description xml:lang="fr">Dalheim</common:Description>
+          <structure:Parent>
+            <Ref id="C12" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1203">
+          <common:Name xml:lang="en">Lenningen</common:Name>
+          <common:Name xml:lang="fr">Lenningen</common:Name>
+          <common:Description xml:lang="en">Lenningen</common:Description>
+          <common:Description xml:lang="fr">Lenningen</common:Description>
+          <structure:Parent>
+            <Ref id="C12" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1204">
+          <common:Name xml:lang="en">Mondorf-les-Bains</common:Name>
+          <common:Name xml:lang="fr">Mondorf-les-Bains</common:Name>
+          <common:Description xml:lang="en">Mondorf-les-Bains</common:Description>
+          <common:Description xml:lang="fr">Mondorf-les-Bains</common:Description>
+          <structure:Parent>
+            <Ref id="C12" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1205">
+          <common:Name xml:lang="en">Remich</common:Name>
+          <common:Name xml:lang="fr">Remich</common:Name>
+          <common:Description xml:lang="en">Remich</common:Description>
+          <common:Description xml:lang="fr">Remich</common:Description>
+          <structure:Parent>
+            <Ref id="C12" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1206">
+          <common:Name xml:lang="en">Schengen</common:Name>
+          <common:Name xml:lang="fr">Schengen</common:Name>
+          <common:Description xml:lang="en">Schengen</common:Description>
+          <common:Description xml:lang="fr">Schengen</common:Description>
+          <structure:Parent>
+            <Ref id="C12" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1207">
+          <common:Name xml:lang="en">Stadtbredimus</common:Name>
+          <common:Name xml:lang="fr">Stadtbredimus</common:Name>
+          <common:Description xml:lang="en">Stadtbredimus</common:Description>
+          <common:Description xml:lang="fr">Stadtbredimus</common:Description>
+          <structure:Parent>
+            <Ref id="C12" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1208">
+          <common:Name xml:lang="en">Waldbredimus</common:Name>
+          <common:Name xml:lang="fr">Waldbredimus</common:Name>
+          <common:Description xml:lang="en">Waldbredimus</common:Description>
+          <common:Description xml:lang="fr">Waldbredimus</common:Description>
+          <structure:Parent>
+            <Ref id="C12" />
+          </structure:Parent>
+        </structure:Code>
+        <structure:Code id="1209">
+          <common:Name xml:lang="en">Bous-Waldbredimus</common:Name>
+          <common:Name xml:lang="fr">Bous-Waldbredimus</common:Name>
+          <common:Description xml:lang="en">Bous-Waldbredimus</common:Description>
+          <common:Description xml:lang="fr">Bous-Waldbredimus</common:Description>
+          <structure:Parent>
+            <Ref id="C12" />
+          </structure:Parent>
+        </structure:Code>
+      </structure:Codelist>
+    </structure:Codelists>
+  </message:Structures>
+</message:Structure>

@@ -11,8 +11,11 @@ supersede them instead.
 | [0003](0003-frontend-state-ownership.md)                   | Frontend state ownership                       | Accepted |
 | [0004](0004-environments-and-deployment.md)                | Environments, secrets and deployment           | Accepted |
 | [0005](0005-no-database-static-first.md)                   | Static-first, and no database                  | Accepted |
+| [0006](0006-published-artifact-layout.md)                  | Published artifact layout                      | Accepted |
+| [0007](0007-commune-geography-authority.md)                | Commune geography authority, geometry deferred | Accepted |
 
 Decisions deliberately deferred, each of which will get an ADR when it is made:
+commune boundary geometry and its producer ([0007](0007-commune-geography-authority.md)),
 basemap and tile delivery, chart library, internationalisation, prerendering
 place pages for search, PMTiles, browser-side Parquet, analytics, and automatic
 deployment.

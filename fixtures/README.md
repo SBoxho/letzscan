@@ -15,9 +15,10 @@ connector tests run offline, deterministically, and without hitting a provider.
 
 ## Contents
 
-| Directory        | Source           | Notes                                                            |
-| ---------------- | ---------------- | ---------------------------------------------------------------- |
-| `example-local/` | none — synthetic | Template payload used by the reference connector. Not real data. |
+| Directory        | Source           | Notes                                                                           |
+| ---------------- | ---------------- | ------------------------------------------------------------------------------- |
+| `example-local/` | none — synthetic | Template payload used by the reference connector. Not real data.                |
+| `statec-lustat/` | STATEC (LUSTAT)  | Real recorded SDMX responses. See its own README for URLs, dates and checksums. |
 
 `example-local/population-sample.json` is deliberately awkward in the ways real
 Luxembourg distributions are: provider field names in French, a thousands

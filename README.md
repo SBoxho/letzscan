@@ -7,20 +7,28 @@ LëtzScan is **area-first**. The primary object is a place, or right now — not
 dataset and not a map layer. Ask "what is it like in this commune?" and get an
 answer with a source, a licence and an observation date attached.
 
-## Status: v2 rebuild, foundations only
+## Status: v2 rebuild, first dataset live
 
-This repository is a greenfield rebuild. **No dataset has been migrated yet and
-nothing is deployed.** What exists today is the structure the rest will be built
-on, in vertical slices:
+This repository is a greenfield rebuild, built in vertical slices. **Nothing is
+deployed yet**, but the first dataset now runs end to end, offline, from
+upstream payload to rendered page:
 
+- **Population by commune** — STATEC LUSTAT dataflow `LU1:DF_X021(1.1)`, CC0,
+  covering all 100 Luxembourg communes and the national total, rendered at
+  `/places/:geoId` with source, licence, period and retrieval date attached;
 - product shell with every surface routed and URL-addressable;
 - Cloudflare Worker with a health endpoint, a cron entry point and R2 bindings;
-- Python pipeline with a reference connector, contracts, tests and linting;
+- Python pipeline with a real connector plus the reference one, contracts, tests
+  and linting;
 - canonical data contracts shared by TypeScript and Python;
 - reviewed source catalogue with validation in CI.
 
-The next slice is an official population-by-commune dataset feeding
-`/places/:geoId`.
+Try it: `npm run dev`, then http://localhost:5173/places/lu.commune.0304. A small
+published snapshot is committed under `apps/web/public/data`, so the app renders
+real figures with no pipeline run and no network access.
+
+The next slice adds a second dataset; commune boundary geometry is deliberately
+deferred ([ADR 0007](docs/adr/0007-commune-geography-authority.md)).
 
 The predecessor's honest failure modes — stale data behind a surface called
 "Live", a pipeline nobody but the author could run, no licence, no CI — are what
@@ -36,7 +44,7 @@ packages/
   contracts/           Zod canonical contracts — the single source of truth
 pipeline/              Python (uv): connectors, normalise, derive, publish
 catalog/               Reviewed source, indicator and geography metadata as data
-  sources/  indicators/  geographies/
+  sources/  indicators/  geographies/  datasets/
 schemas/               JSON Schema generated from packages/contracts (do not edit)
 fixtures/              Small recorded provider payloads for offline tests
 notebooks/exploration/ Research only, never production lineage
@@ -93,12 +101,15 @@ For local Worker secrets, copy `apps/edge/.dev.vars.example` to
 npm run py:test                                        # pytest
 npm run catalog:validate                               # catalogue vs schemas
 uv run --directory pipeline letzscan list-connectors
-uv run --directory pipeline letzscan run example-local --out .out
+uv run --directory pipeline letzscan run statec-lustat --out .out
+npm run data:snapshot                                  # regenerate the committed dev snapshot
 ```
 
-The last command runs the reference connector against a synthetic fixture and
-writes a draft release — the whole path from provider payload to validated
-canonical artifact, offline.
+`run` turns a recorded provider payload into validated canonical observations
+plus a release manifest with real checksums. `publish` (wrapped by
+`npm run data:snapshot`) writes the artifacts the browser reads. Both work
+offline: connectors read recorded fixtures, so neither CI nor a laptop calls a
+provider. See [`docs/adding-a-data-source.md`](docs/adding-a-data-source.md).
 
 ### Run everything CI runs
 

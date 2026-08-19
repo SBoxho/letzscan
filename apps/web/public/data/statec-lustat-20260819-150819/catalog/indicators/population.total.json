@@ -1,0 +1,10 @@
+{
+  "aggregation": "sum",
+  "decimals": 0,
+  "definition": "Number of persons recorded as resident in the geography at the reference date, exactly as published by the producer. Not a LëtzScan estimate, not adjusted, and not interpolated between reference dates.",
+  "id": "population.total",
+  "name": "Total population",
+  "notes": "Population is the denominator for most per-resident rates, so its geography set and reference date must match the numerator's before any ratio is derived.",
+  "unit": "person",
+  "value_type": "count"
+}
