@@ -15,7 +15,8 @@ CONNECTORS: dict[str, Connector] = {
     for connector in (
         # Template only. It reads a synthetic fixture and publishes nothing.
         ExampleLocalConnector(),
-        # STATEC LUSTAT DF_X021: total population by commune.
+        # STATEC LUSTAT: total population by commune. Which dataflow that is,
+        # and every other provider specific, stays inside the connector.
         StatecLustatConnector(),
     )
 }
