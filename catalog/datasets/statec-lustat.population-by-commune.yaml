@@ -1,0 +1,56 @@
+id: statec-lustat.population-by-commune
+source_id: statec-lustat
+title: Total population by commune, Luxembourg
+description: >-
+  Resident population of each Luxembourg commune, and of the country, as
+  published by STATEC in LUSTAT dataflow LU1:DF_X021(1.1) "Population par canton
+  et commune". Values are reproduced exactly as published: not re-based, not
+  interpolated and not adjusted.
+
+indicator_ids:
+  - population.total
+geography_set_id: lu-communes
+
+cadence: annual
+
+temporal_coverage:
+  start: '2010'
+  end: '2026'
+
+caveats:
+  - >-
+    A period of YYYY means the situation on 1 January of that year, not an
+    average over it. The producer states this in codelist CL_X021_NOTE_SPECIFICATION,
+    code LU: "Situation as of 1st January. Exception for the following years:
+    Until 1970 and for 1981, 1991, 2001, 2011: date of general population
+    census."
+  - >-
+    Break in series. The same note records "as from 1821, Source: STATEC, as
+    from 2017, Source: STATEC and CTIE", so figures from 2017 onward are
+    produced differently from earlier ones.
+  - >-
+    Historical figures are restated by STATEC on the *current* commune
+    boundaries. The 100 communes in force since 1 September 2023 each carry a
+    full back-series, so a 2010 figure for Groussbus-Wal describes the territory
+    of a commune that did not legally exist until 2023. Comparing a LëtzScan
+    figure with a contemporaneous publication from, say, 2015 may therefore show
+    a different commune split for the same territory.
+  - >-
+    STATEC published no figure for Groussbus-Wal (LAU 0711) for 2010. Wherever
+    that period is published it is recorded as `missing`, never as zero: the
+    2010 commune figures consequently sum to 500 333 against a published
+    national total of 502 066.
+  - >-
+    The upstream dataflow mixes communes, the 12 cantons and the national total
+    in a single dimension. LëtzScan publishes the communes and the national
+    total; canton rows are dropped, because no canton geography set is
+    catalogued yet. Summing the published commune values reproduces the national
+    total exactly for every year except 2010, for the reason above.
+  - >-
+    Reviewed coverage of this dataset starts at 2010. The upstream series
+    reaches back to 1821 on an irregular, census-driven basis; that earlier span
+    is not published because it has not been reviewed. An individual release may
+    carry a narrower window — `temporal_coverage` in the published artifact
+    states what that release actually contains.
+
+first_published_at: '2026-08-19'

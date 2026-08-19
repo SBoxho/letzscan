@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider, createMemoryHistory, createRouter } from '@tanstack/react-router';
 import { describe, expect, it } from 'vitest';
 import { routeTree } from './routeTree';
@@ -8,7 +9,15 @@ async function renderAt(path: string) {
     routeTree,
     history: createMemoryHistory({ initialEntries: [path] }),
   });
-  render(<RouterProvider router={router} />);
+  // Surfaces that read published artifacts need the same provider the app
+  // mounts in AppProviders; see docs/adr/0003.
+  render(
+    <QueryClientProvider
+      client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}
+    >
+      <RouterProvider router={router} />
+    </QueryClientProvider>,
+  );
   return router;
 }
 

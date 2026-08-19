@@ -58,9 +58,28 @@ because it is a copy that will eventually be wrong.
 
 ## Current sources
 
-The catalogue currently contains one reviewed entry, `statec-lustat`, in `draft`
-status. Nothing is published from it yet, and its licence record is marked as
-requiring verification against the distribution page before first publication.
+| Source                                                          | Status     | Licence | Terms read | Read at                                                                                                |
+| --------------------------------------------------------------- | ---------- | ------- | ---------- | ------------------------------------------------------------------------------------------------------ |
+| `statec-lustat` — STATEC LUSTAT statistical database (SDMX API) | **active** | CC0-1.0 | 2026-08-19 | [statistiques.public.lu/fr/support/notice.html](https://statistiques.public.lu/fr/support/notice.html) |
+| `statec-lau-codes` — STATEC LAU code register                   | draft      | CC0-1.0 | 2026-08-19 | [statistiques.public.lu/fr/support/notice.html](https://statistiques.public.lu/fr/support/notice.html) |
 
-A generated, always-current listing will be produced from `catalog/` as part of
-the first vertical slice, so this section cannot drift.
+Both records rest on STATEC's own legal notice, section "Open Data et propriété
+intellectuelle (Copyright)", which publishes its content "sans restriction, sous
+les termes du Transfert universel dans le Domaine Public Creative Commons CC0
+1.0". The CGU on that page names both `statistiques.public.lu` **and**
+`lustat.statec.lu`, so the grant reaches the distribution actually called rather
+than being inferred from a portal. It is corroborated for the API by
+[data.public.lu](https://data.public.lu/fr/datasets/api-de-la-base-de-donnees-lustat/),
+which records `cc-zero`.
+
+Two limits a re-checker should know. The grant is worded "sauf indication
+contraire", so it is a default rather than a per-dataflow statement — the
+`DF_X021` dataflow and its structure were checked for a contrary rights
+annotation and carry none. And there is no licence field inside the SDMX payload
+itself: the terms attach through the site notice, not the API response.
+
+CC0 imposes no attribution condition. STATEC asks reusers to follow its Open Data
+guidelines as a matter of goodwill, and LëtzScan attributes anyway, per rule 3.
+
+`catalog/` remains the authoritative record; this table is a summary of it. A
+generated, always-current listing is still to come.

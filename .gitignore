@@ -163,8 +163,13 @@ __pycache__/
 
 # Local data working directories (never commit generated or upstream data)
 /data/
+/.out/
 pipeline/.out/
 pipeline/.cache/
+
+# Exception: the small published snapshot committed so `npm run dev` has real
+# data to render. Regenerate with `npm run data:snapshot`.
+!apps/web/public/data/
 
 # Jupyter
 .ipynb_checkpoints/

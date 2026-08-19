@@ -85,6 +85,24 @@ class Observation(CanonicalModel):
         return self
 
 
+class Geography(CanonicalModel):
+    """One place, in one boundary version.
+
+    ``code`` is the official code exactly as the producer publishes it and is the
+    only thing ever joined on. ``name`` is presentation: communes get renamed and
+    spelled differently by different producers, so a name is never a key.
+    """
+
+    id: str
+    set_id: str
+    code: str
+    name: str
+    level: Literal["country", "district", "canton", "commune", "quarter", "locality"]
+    parent_id: str | None = None
+    valid_from: str
+    valid_to: str | None = None
+
+
 class ReleaseInput(CanonicalModel):
     source_id: str
     dataset_id: str | None = None

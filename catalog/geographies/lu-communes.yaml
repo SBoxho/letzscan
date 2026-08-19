@@ -1,21 +1,40 @@
 id: lu-communes
-title: Luxembourg communes
+title: Luxembourg communes (as of 1 September 2023)
 level: commune
 code_scheme: LAU
-source_id: statec-lustat
-valid_from: '2024-01-01'
+source_id: statec-lau-codes
+valid_from: '2023-09-01'
 supersedes: []
 
 description: >-
-  Placeholder declaration for the commune geography set. `members` is empty on
-  purpose: the gazetteer is produced by the pipeline from an authoritative
-  source, not hand-maintained here.
+  The 100 Luxembourg communes in force since 1 September 2023, keyed by their
+  LAU 2 code. `members` is empty on purpose: the gazetteer is produced by the
+  pipeline from an authoritative source and published as an artifact, not
+  hand-maintained here.
 
-  Two things must be settled by the first vertical slice, and are deliberately
-  not guessed now: (1) `valid_from` must be the producer's own effective date
-  for this boundary version, not an assumption; (2) boundary geometry comes from
-  an official boundary source, which gets its own catalogue entry — this set
-  currently only declares the code space.
+  `valid_from` is the producer's own effective date, not an assumption. STATEC's
+  LAU code register (A1106.xlsx, sheet "LU_SEP 2023") states it verbatim as
+  "codes UAL au 01.09.2023 (100 communes)". It is corroborated by the two acts
+  that produced the current set, both of which say in their Article 13 "La
+  présente loi entre en vigueur le 1er septembre 2023":
+    - Loi du 3 mars 2023 portant fusion des communes de Grosbous et de Wahl,
+      creating « Groussbus-Wal » (LAU 0711)
+      https://legilux.public.lu/eli/etat/leg/loi/2023/03/03/a115/jo
+    - Loi du 3 mars 2023 portant fusion des communes de Bous et de Waldbredimus,
+      creating « Bous-Waldbredimus » (LAU 1209)
+      https://legilux.public.lu/eli/etat/leg/loi/2023/03/03/a117/jo
+
+  The code space is the national LAU scheme: two digits of canton (LAU 1) plus
+  two of commune, zero-padded. The codes carried by the statec-lustat dataflow
+  were checked on 2026-08-19 to be exactly the 100 codes in STATEC's LAU
+  register, so statistical series join to this set on code without a crosswalk.
+
+  Commune boundary *geometry* is deliberately absent. This set declares the code
+  space only; choosing a geometry producer is a separate decision recorded in
+  docs/adr/0007-commune-geography-authority.md.
 
 # Boundary changes create a NEW set plus a crosswalk. They never mutate this one.
+# The pre-2023-09-01 sets (102 communes from 2018-01-01, 105 from 2017-01-01) are
+# not modelled: no LëtzScan dataset needs them yet, and the population series is
+# restated by STATEC on current boundaries.
 members: []

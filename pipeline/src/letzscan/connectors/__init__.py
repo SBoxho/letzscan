@@ -7,6 +7,7 @@ whose connector is missing fails validation.
 
 from letzscan.connectors.base import Connector, ConnectorResult, Provenance
 from letzscan.connectors.example_local import ExampleLocalConnector
+from letzscan.connectors.statec_lustat import StatecLustatConnector
 
 #: Connector id -> implementation.
 CONNECTORS: dict[str, Connector] = {
@@ -14,6 +15,9 @@ CONNECTORS: dict[str, Connector] = {
     for connector in (
         # Template only. It reads a synthetic fixture and publishes nothing.
         ExampleLocalConnector(),
+        # STATEC LUSTAT: total population by commune. Which dataflow that is,
+        # and every other provider specific, stays inside the connector.
+        StatecLustatConnector(),
     )
 }
 

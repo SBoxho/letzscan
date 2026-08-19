@@ -7,3 +7,11 @@ uv.lock
 package-lock.json
 schemas/*.schema.json
 *.ipynb
+
+# Published artifacts. Their bytes are checksummed in the release manifest, so
+# reformatting them would silently invalidate every sha256 the release records.
+apps/web/public/data/
+
+# Recorded provider payloads are verbatim, byte-for-byte. Their checksums are
+# published in fixtures/*/README.md. Documentation here is still formatted.
+fixtures/**/*.json
