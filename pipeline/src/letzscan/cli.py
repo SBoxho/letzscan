@@ -88,7 +88,12 @@ def _cmd_run(args: argparse.Namespace) -> int:
     # Write first, then checksum what was actually written: a manifest that
     # describes bytes nobody wrote is worse than no manifest.
     body = (
-        json.dumps([o.to_payload() for o in result.observations], indent=2, ensure_ascii=False)
+        json.dumps(
+            [o.to_payload() for o in result.observations],
+            indent=2,
+            ensure_ascii=False,
+            allow_nan=False,
+        )
         + "\n"
     ).encode("utf-8")
     observations_path = out_dir / "observations.json"
@@ -147,6 +152,7 @@ def _cmd_publish(args: argparse.Namespace) -> int:
         validate_entity("observation", observation.to_payload())
 
     observations = result.observations
+    narrowing: list[str] = []
     if args.since:
         # Used to generate the small snapshot committed for local development.
         # It narrows the periods published, never the places: every commune still
@@ -155,6 +161,18 @@ def _cmd_publish(args: argparse.Namespace) -> int:
         if not observations:
             print(f"No observations at or after {args.since!r}.", file=sys.stderr)
             return 1
+
+        dropped = len(result.observations) - len(observations)
+        if dropped:
+            # Said out loud in the manifest. A release that quietly carries less
+            # than the connector read is how a partial artifact gets mistaken for
+            # the whole dataset — including by the warnings just above, which
+            # describe periods this release does not contain.
+            narrowing.append(
+                f"Release narrowed to periods from {args.since}: {dropped} of "
+                f"{len(result.observations)} observations were not published. Warnings "
+                "above may refer to periods outside this release."
+            )
 
     now = utc_now()
     release_id = _release_id(args.connector, now)
@@ -172,7 +190,9 @@ def _cmd_publish(args: argparse.Namespace) -> int:
     release = build_release(
         release_id, now.isoformat().replace("+00:00", "Z"), [result], outputs=outputs
     )
-    release = release.model_copy(update={"status": "published"})
+    release = release.model_copy(
+        update={"status": "published", "warnings": [*release.warnings, *narrowing]}
+    )
 
     write_release(release, destination / release_id)
     # Last, and only once everything above validated: a failed build must not be

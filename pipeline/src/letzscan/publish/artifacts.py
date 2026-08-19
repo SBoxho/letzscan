@@ -55,9 +55,14 @@ class _Writer:
         self.outputs: list[ReleaseOutput] = []
 
     def write(self, relative_path: str, payload: Any) -> None:
-        body = (json.dumps(payload, indent=2, sort_keys=True, ensure_ascii=False) + "\n").encode(
-            "utf-8"
-        )
+        # allow_nan=False on purpose. Python happily writes bare NaN/Infinity
+        # tokens, JSON Schema accepts them as numbers, and no browser can parse
+        # the result — a file that passes every check here and fails everywhere
+        # else. The last gate before bytes hit disk refuses them.
+        body = (
+            json.dumps(payload, indent=2, sort_keys=True, ensure_ascii=False, allow_nan=False)
+            + "\n"
+        ).encode("utf-8")
         destination = self._root / relative_path
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_bytes(body)
@@ -123,6 +128,15 @@ def publish_observations(
             # The catalogue declares the set; the gazetteer is produced here, so
             # the published set is the one place both exist together.
             payload = {**payload, "members": [g.to_payload() for g in geographies]}
+        if entity == "dataset":
+            # The catalogue describes the dataset in full; a release may carry
+            # less of it. The artifact must describe the periods it actually
+            # contains, or a place page renders coverage the reader cannot find.
+            periods = sorted({observation.period for observation in observations})
+            payload = {
+                **payload,
+                "temporal_coverage": {"start": periods[0], "end": periods[-1]},
+            }
 
         validate_entity(entity, payload)
         writer.write(f"catalog/{directory}/{identifier}.json", payload)

@@ -115,7 +115,7 @@ class UpstreamShapeError(ValueError):
     """
 
 
-def _canonical_status(raw_status: str, value: float | None) -> ObservationStatus:
+def _canonical_status(raw_status: str, value: float | None, raw_value: str) -> ObservationStatus:
     """Map a provider status code, defaulting only when the provider is silent."""
     code = raw_status.strip()
     if code:
@@ -128,9 +128,43 @@ def _canonical_status(raw_status: str, value: float | None) -> ObservationStatus
             raise UpstreamShapeError(msg)
         return mapped
 
-    # No status flag. An empty cell means the producer published no figure — that
-    # is 'missing', and it is never zero.
-    return ObservationStatus.OBSERVED if value is not None else ObservationStatus.MISSING
+    if value is not None:
+        return ObservationStatus.OBSERVED
+
+    # No status flag and no number. An *empty* cell means the producer published
+    # nothing at all — that is 'missing'. A cell holding a marker such as ``c``
+    # (confidential) or ``:`` means the producer had a figure and withheld it —
+    # that is 'suppressed'. Same vocabulary as OBS_STATUS, different column, and
+    # the two must not collapse into one status.
+    return ObservationStatus.MISSING if raw_value == "" else ObservationStatus.SUPPRESSED
+
+
+def _population_count(value: float, where: str, period: str) -> float:
+    """Reject a number that cannot be a count of residents.
+
+    ``parse_number`` is a permissive shared helper — it accepts anything Python's
+    ``float()`` accepts. That is right for the general case and wrong here: this
+    dataflow declares ``DECIMALS`` as ``0`` on every row, so a population is a
+    finite, non-negative whole number and anything else is a parse that went
+    wrong rather than a figure worth publishing.
+
+    ``NaN`` matters especially: it satisfies the canonical contract, survives
+    JSON Schema validation, and is then serialised by ``json.dumps`` as a bare
+    ``NaN`` token that no browser can parse. It has to die here.
+    """
+    if value != value or value in (float("inf"), float("-inf")):
+        msg = f"{where} {period}: non-finite population value {value!r}."
+        raise UpstreamShapeError(msg)
+    if value < 0:
+        msg = f"{where} {period}: negative population value {value!r}."
+        raise UpstreamShapeError(msg)
+    if value != int(value):
+        msg = (
+            f"{where} {period}: fractional population value {value!r}. A thousands "
+            "separator read as a decimal point looks exactly like this."
+        )
+        raise UpstreamShapeError(msg)
+    return value
 
 
 #: SDMX 2.1 structure-message namespaces, needed to read the codelist that
@@ -198,19 +232,38 @@ class StatecLustatConnector:
 
         Membership is taken from the *data*, not from the codelist: a code is a
         current commune when the producer publishes a figure for it in the latest
-        period. That set was checked on 2026-08-19 against STATEC's own LAU
-        register ("codes UAL au 01.09.2023 (100 communes)") and matched exactly.
+        period. The codelist spans the code space over time and so cannot say
+        which codes are in force. This set was checked on 2026-08-19 against
+        STATEC's own LAU register ("codes UAL au 01.09.2023 (100 communes)") and
+        matched exactly.
+
+        The latest period is only trusted when it is *complete*. A single row for
+        a period STATEC has begun publishing early would otherwise redefine the
+        country as that one commune, and — because the app answers "is this a
+        real place?" from this gazetteer — every other commune would render as
+        "unknown place" while its data sat published in the same release.
         """
         observations, _ = self._parse(self._fixture.read_bytes())
-        latest = max(o.period for o in observations)
-        current = sorted(
-            {
-                o.geo_id.removeprefix("lu.commune.")
-                for o in observations
-                if o.geo_id is not None and o.period == latest
-            }
-        )
 
+        communes_by_period: dict[str, set[str]] = {}
+        for observation in observations:
+            if observation.geo_id is not None:
+                communes_by_period.setdefault(observation.period, set()).add(
+                    observation.geo_id.removeprefix("lu.commune.")
+                )
+
+        latest = max(communes_by_period)
+        fullest = max(communes_by_period, key=lambda period: len(communes_by_period[period]))
+        if len(communes_by_period[latest]) != len(communes_by_period[fullest]):
+            msg = (
+                f"Period {latest} carries {len(communes_by_period[latest])} communes but "
+                f"{fullest} carries {len(communes_by_period[fullest])}. Either {latest} is "
+                "incomplete, or the boundary version changed — which needs a new geography "
+                "set and a crosswalk, not a silently resized gazetteer."
+            )
+            raise UpstreamShapeError(msg)
+
+        current = sorted(communes_by_period[latest])
         names = self.commune_names()
         unnamed = [code for code in current if code not in names]
         if unnamed:
@@ -243,14 +296,20 @@ class StatecLustatConnector:
     def _parse(self, raw_bytes: bytes) -> tuple[list[Observation], list[str]]:
         # LUSTAT serves UTF-8 and commune names carry umlauts (Käerjeng). Decode
         # strictly: mojibake in a join key is worse than a failed build.
-        reader = csv.DictReader(io.StringIO(raw_bytes.decode("utf-8")))
+        # `utf-8-sig` because a byte-order mark would otherwise turn the first
+        # column name into a mystery rather than a readable error.
+        reader = csv.DictReader(io.StringIO(raw_bytes.decode("utf-8-sig")))
 
+        # OBS_STATUS is required, not optional. If the provider dropped it, every
+        # suppression flag would vanish and a withheld value would publish as a
+        # number — the one reshape that can turn an absence into a figure.
         missing_columns = {
             _COL_DATAFLOW,
             _COL_FREQ,
             _COL_GEO,
             _COL_PERIOD,
             _COL_VALUE,
+            _COL_STATUS,
         } - set(reader.fieldnames or [])
         if missing_columns:
             msg = (
@@ -262,8 +321,29 @@ class StatecLustatConnector:
         observations: list[Observation] = []
         warnings: list[str] = []
         skipped_cantons = 0
+        seen: set[tuple[str | None, str]] = set()
 
-        for row in reader:
+        required = (
+            _COL_DATAFLOW,
+            _COL_FREQ,
+            _COL_GEO,
+            _COL_PERIOD,
+            _COL_VALUE,
+            _COL_STATUS,
+        )
+
+        for line, row in enumerate(reader, start=2):
+            # csv fills absent fields with None, so a short row means the payload
+            # was cut mid-record. An empty *value* is a legitimate `""`; a value
+            # key that is None is a truncated download, and truncation must never
+            # publish the digits it happened to reach.
+            if any(row.get(column) is None for column in required):
+                msg = (
+                    f"Truncated row at line {line}: expected {len(required)} declared "
+                    "columns. The response was cut mid-record."
+                )
+                raise UpstreamShapeError(msg)
+
             dataflow = (row.get(_COL_DATAFLOW) or "").strip()
             if dataflow != _EXPECTED_DATAFLOW:
                 msg = (
@@ -296,16 +376,36 @@ class StatecLustatConnector:
                 )
                 raise UpstreamShapeError(msg)
 
-            value = parse_number(row.get(_COL_VALUE))
-            status = _canonical_status(row.get(_COL_STATUS) or "", value)
+            period = parse_year(row[_COL_PERIOD])
+            key = (geo_id, period)
+            if key in seen:
+                # Two figures for the same place and period cannot both be true,
+                # and "last row wins" would publish whichever the provider
+                # happened to serialise second.
+                msg = (
+                    f"Duplicate observation for {geo_id or 'national'} {period}. "
+                    "The distribution should carry one value per place per period."
+                )
+                raise UpstreamShapeError(msg)
+            seen.add(key)
+
+            raw_value = (row.get(_COL_VALUE) or "").strip()
+            value = parse_number(raw_value)
+            if value is not None:
+                value = _population_count(value, geo_id or "national", period)
+            status = _canonical_status(row.get(_COL_STATUS) or "", value, raw_value)
 
             if status in {ObservationStatus.SUPPRESSED, ObservationStatus.MISSING}:
                 # Carried to /status rather than swallowed: a hole in a published
                 # series should be visible, and must never be read as zero.
                 where = geo_id or "national"
+                reason = (
+                    "withheld upstream"
+                    if status is ObservationStatus.SUPPRESSED
+                    else "no figure published upstream"
+                )
                 warnings.append(
-                    f"{where} {row[_COL_PERIOD]}: no figure published upstream, "
-                    f"recorded as {status.value} rather than zero."
+                    f"{where} {period}: {reason}, recorded as {status.value} rather than zero."
                 )
                 value = None
 
@@ -313,7 +413,7 @@ class StatecLustatConnector:
                 Observation(
                     indicator_id=INDICATOR_ID,
                     geo_id=geo_id,
-                    period=parse_year(row[_COL_PERIOD]),
+                    period=period,
                     value=value,
                     unit=UNIT,
                     status=status,

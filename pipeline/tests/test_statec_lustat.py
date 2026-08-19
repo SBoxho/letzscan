@@ -23,6 +23,7 @@ from letzscan.connectors.statec_lustat import (
 )
 from letzscan.contracts import validate_entity
 from letzscan.contracts.models import ObservationStatus
+from letzscan.paths import fixtures_dir
 
 _HEADER = (
     "DATAFLOW,FREQ,CANTON,TIME_PERIOD,OBS_VALUE,"
@@ -280,6 +281,129 @@ def test_an_empty_payload_is_an_error_not_a_successful_empty_release(
 ) -> None:
     with pytest.raises(UpstreamShapeError, match="no commune or national"):
         StatecLustatConnector(fixture=_csv(tmp_path)).fetch()
+
+
+def test_a_dropped_status_column_fails_rather_than_losing_every_suppression(
+    tmp_path: Path,
+) -> None:
+    """The one reshape that could turn a withheld value into a published number."""
+    payload = _csv(
+        tmp_path,
+        "LU1:DF_X021(1.1),A,0304,2026,137678,0",
+        header="DATAFLOW,FREQ,CANTON,TIME_PERIOD,OBS_VALUE,DECIMALS",
+    )
+
+    with pytest.raises(UpstreamShapeError, match="OBS_STATUS"):
+        StatecLustatConnector(fixture=payload).fetch()
+
+
+def test_two_values_for_the_same_place_and_period_fail_rather_than_last_wins(
+    tmp_path: Path,
+) -> None:
+    payload = _csv(
+        tmp_path,
+        "LU1:DF_X021(1.1),A,0304,2026,137678,,,,,,0",
+        "LU1:DF_X021(1.1),A,0304,2026,999999,,,,,,0",
+    )
+
+    with pytest.raises(UpstreamShapeError, match="Duplicate observation"):
+        StatecLustatConnector(fixture=payload).fetch()
+
+
+@pytest.mark.parametrize(
+    ("raw", "reason"),
+    [
+        ("NaN", "non-finite"),
+        ("Infinity", "non-finite"),
+        ("-137678", "negative"),
+        ('"137,678"', "fractional"),
+    ],
+)
+def test_a_value_that_cannot_be_a_population_fails_loudly(
+    tmp_path: Path, raw: str, reason: str
+) -> None:
+    """`parse_number` is permissive by design; a person count is not.
+
+    `NaN` is the dangerous one: it satisfies the canonical contract and is then
+    written as a bare token no browser can parse. `"137,678"` is the subtle one —
+    a thousands separator read as a decimal point silently divides by 1000.
+    """
+    payload = _csv(tmp_path, f"LU1:DF_X021(1.1),A,0304,2026,{raw},,,,,,0")
+
+    with pytest.raises(UpstreamShapeError, match=reason):
+        StatecLustatConnector(fixture=payload).fetch()
+
+
+def test_a_truncated_payload_fails_rather_than_publishing_the_digits_it_reached(
+    tmp_path: Path,
+) -> None:
+    """A body cut mid-number would otherwise publish 47 as a commune's population."""
+    path = tmp_path / "truncated.csv"
+    path.write_text(
+        _HEADER
+        + "\nLU1:DF_X021(1.1),A,0304,2026,137678,,,,,,0"
+        + "\nLU1:DF_X021(1.1),A,0101,2026,47",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(UpstreamShapeError, match="Truncated row"):
+        StatecLustatConnector(fixture=path).fetch()
+
+
+def test_a_withheld_marker_in_the_value_cell_is_suppressed_not_missing(
+    tmp_path: Path,
+) -> None:
+    """Same fact, different column: `c` means confidential either way."""
+    payload = _csv(
+        tmp_path,
+        "LU1:DF_X021(1.1),A,0304,2026,c,,,,,,0",
+        "LU1:DF_X021(1.1),A,0101,2026,,,,,,,0",
+    )
+    statuses = {
+        o.geo_id: o.status for o in StatecLustatConnector(fixture=payload).fetch().observations
+    }
+
+    assert statuses["lu.commune.0304"] == ObservationStatus.SUPPRESSED
+    assert statuses["lu.commune.0101"] == ObservationStatus.MISSING
+
+
+def test_a_byte_order_mark_does_not_disguise_itself_as_a_missing_column(
+    tmp_path: Path,
+) -> None:
+    path = tmp_path / "bom.csv"
+    path.write_bytes(
+        b"\xef\xbb\xbf" + (_HEADER + "\nLU1:DF_X021(1.1),A,0304,2026,137678,,,,,,0\n").encode()
+    )
+
+    assert StatecLustatConnector(fixture=path).fetch().observations[0].value == 137678.0
+
+
+# --- The gazetteer must not quietly resize --------------------------------
+
+
+def test_the_gazetteer_carries_every_current_commune() -> None:
+    gazetteer = StatecLustatConnector().geographies("2023-09-01")
+
+    assert len(gazetteer) == 100
+    assert {g.code for g in gazetteer}.isdisjoint({"0705", "0710", "1201", "1208"})
+
+
+def test_a_partial_latest_period_cannot_shrink_the_country_to_one_commune(
+    tmp_path: Path,
+) -> None:
+    """The worst failure this slice could ship.
+
+    STATEC publishing one commune early for a new period used to redefine the
+    gazetteer as that single commune. Because the app answers "is this a real
+    place?" from the gazetteer, all 99 others would have rendered "unknown
+    place" while their figures sat published in the very same release.
+    """
+    recorded = (fixtures_dir() / "statec-lustat" / "population-by-commune.csv").read_bytes()
+    payload = tmp_path / "early.csv"
+    payload.write_bytes(recorded + b"LU1:DF_X021(1.1),A,0304,2027,138000,,,,,,0\r\n")
+
+    with pytest.raises(UpstreamShapeError, match="incomplete"):
+        StatecLustatConnector(fixture=payload).geographies("2023-09-01")
 
 
 # --- Provenance --------------------------------------------------------------

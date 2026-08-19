@@ -1,0 +1,35 @@
+[
+  {
+    "dataset_id": "statec-lustat.population-by-commune",
+    "geo_id": "lu.commune.1005",
+    "indicator_id": "population.total",
+    "period": "2024",
+    "release_id": "statec-lustat-20260819-154923",
+    "source_id": "statec-lustat",
+    "status": "observed",
+    "unit": "person",
+    "value": 5869.0
+  },
+  {
+    "dataset_id": "statec-lustat.population-by-commune",
+    "geo_id": "lu.commune.1005",
+    "indicator_id": "population.total",
+    "period": "2025",
+    "release_id": "statec-lustat-20260819-154923",
+    "source_id": "statec-lustat",
+    "status": "observed",
+    "unit": "person",
+    "value": 5936.0
+  },
+  {
+    "dataset_id": "statec-lustat.population-by-commune",
+    "geo_id": "lu.commune.1005",
+    "indicator_id": "population.total",
+    "period": "2026",
+    "release_id": "statec-lustat-20260819-154923",
+    "source_id": "statec-lustat",
+    "status": "observed",
+    "unit": "person",
+    "value": 6031.0
+  }
+]

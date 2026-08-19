@@ -36,9 +36,10 @@ caveats:
     figure with a contemporaneous publication from, say, 2015 may therefore show
     a different commune split for the same territory.
   - >-
-    STATEC published no figure for Groussbus-Wal (LAU 0711) for 2010. It is
-    recorded as `missing`, never as zero: the 2010 commune figures consequently
-    sum to 500 333 against a published national total of 502 066.
+    STATEC published no figure for Groussbus-Wal (LAU 0711) for 2010. Wherever
+    that period is published it is recorded as `missing`, never as zero: the
+    2010 commune figures consequently sum to 500 333 against a published
+    national total of 502 066.
   - >-
     The upstream dataflow mixes communes, the 12 cantons and the national total
     in a single dimension. LëtzScan publishes the communes and the national
@@ -46,8 +47,10 @@ caveats:
     catalogued yet. Summing the published commune values reproduces the national
     total exactly for every year except 2010, for the reason above.
   - >-
-    Coverage published here starts at 2010. The upstream series reaches back to
-    1821 on an irregular, census-driven basis; that earlier span is not
-    published because it has not been reviewed.
+    Reviewed coverage of this dataset starts at 2010. The upstream series
+    reaches back to 1821 on an irregular, census-driven basis; that earlier span
+    is not published because it has not been reviewed. An individual release may
+    carry a narrower window — `temporal_coverage` in the published artifact
+    states what that release actually contains.
 
 first_published_at: '2026-08-19'
