@@ -20,6 +20,7 @@ export * from './indicator.js';
 export * from './geography.js';
 export * from './observation.js';
 export * from './live-feature.js';
+export * from './basemap.js';
 export * from './release.js';
 export * from './registry.js';
 export * from './api.js';

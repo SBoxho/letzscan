@@ -1,0 +1,662 @@
+{
+  "created_at": "2026-10-13T07:10:54.126220Z",
+  "id": "statec-lustat-20261013-071054",
+  "inputs": [
+    {
+      "fetched_at": "2026-10-13T07:10:53.948766Z",
+      "sha256": "7964eb2d311adee2884fd24b8a412739cb3727dbeeebf1c2f9debdfb83d07e81",
+      "source_id": "statec-lustat"
+    }
+  ],
+  "outputs": [
+    {
+      "bytes": 2545,
+      "content_type": "application/json",
+      "path": "catalog/datasets/statec-lustat.population-by-commune.json",
+      "sha256": "a31efe54bf19e5e783cb108adf3b15e7c04462573dbe3a13c58dfeb8d6eb1601"
+    },
+    {
+      "bytes": 3003,
+      "content_type": "application/json",
+      "path": "catalog/sources/statec-lustat.json",
+      "sha256": "154be4d56f4526362c7974bfcd7a3952fd17a2a585994181f97bff1a55cc8259"
+    },
+    {
+      "bytes": 20096,
+      "content_type": "application/json",
+      "path": "catalog/geographies/lu-communes.json",
+      "sha256": "d11f67d8d88985be2f6e34bd27b1e2dfc70b91427a1170f1a652e15864fad673"
+    },
+    {
+      "bytes": 538,
+      "content_type": "application/json",
+      "path": "catalog/indicators/population.total.json",
+      "sha256": "bcfdf24e4480c65401756237eecc461a73d33145b4e52a9af3caf7b526ab2a8c"
+    },
+    {
+      "bytes": 629,
+      "content_type": "application/json",
+      "path": "catalog/basemaps/act-geoportail-basemap.json",
+      "sha256": "ab9efc3c19ebb0666bdf0191f298f168415432ddbac5f2370ad6e724e4503543"
+    },
+    {
+      "bytes": 2919,
+      "content_type": "application/json",
+      "path": "catalog/sources/act-geoportail-basemap.json",
+      "sha256": "22a7918d86a645663249f13d558f94568651b61fbc687fa29102f2670179889e"
+    },
+    {
+      "bytes": 948,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0204.json",
+      "sha256": "5591484369ef76e603956395cc17ac358d20da144eb49802b4b23b62667d0c72"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0308.json",
+      "sha256": "a805964b4b7f0b1a9a0a7f1054cf483dace1e1dc183a586e70d59274ff3417ef"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0404.json",
+      "sha256": "df0c40a8ae860c6784898375db64ed54efcb276f1626fdf38590c421923703a7"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0504.json",
+      "sha256": "d6e4d21c3865cc7feab9f93aa42efcf1de1690e161dd6dd52edf4e306f908e5d"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0704.json",
+      "sha256": "60bbab1f49e9f02aac127561099d3827c3cc78d8576dc8e7b298cebcfc301226"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1204.json",
+      "sha256": "d100e2d11eaa922dfc617065ebd64e376d5c4fce1bc8fa5cfb35ddf873f2d3ba"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1001.json",
+      "sha256": "d17a4f9ce8f60306245ba10ebde74cc50cc243f0028120b0df99edcca7823da0"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0505.json",
+      "sha256": "d58a9cd129d032fc8f5dd349cdb751093fcc853e9e9956c356e7366a6c3e4898"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0702.json",
+      "sha256": "63b1491e8aaa22007aa4a77bed1910a99a8e2046488dc33f95d0d08603c164b1"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1101.json",
+      "sha256": "34a64754a8d949e5421da7e1becd1eb006b1d278768e641f2cb0521bb708b335"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1206.json",
+      "sha256": "f9a11f5c705db62711e6190b60662bfa4fb3b59c4b0e43dbd848c8936204d9ee"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0807.json",
+      "sha256": "47f763a636f75c1756d0fbab040b987cb9094878a5f18a2dff5e382295fc42f3"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0901.json",
+      "sha256": "833915fea9313cd9c50c85a7d352ae384239cc254421dff89b0d383584fc6be1"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0101.json",
+      "sha256": "3a1820a41e8479e33269fc77eb3abaed906bea6df50e28f33dfed05917426f02"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0311.json",
+      "sha256": "c4fdc67f56537233c3ebd0f4dc6a75bb60e4b6f4dabde1df9868442fab9884c1"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0610.json",
+      "sha256": "98de29b9b189f1fcccd797acdb4c81fa623310aa0b43fb70bc3ce050f227c366"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1006.json",
+      "sha256": "22c32535d511e9923321e59bd83fa459e93ac743156ea59e7cb89ab0fa9c4bd6"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1108.json",
+      "sha256": "7ad9b3cc026ebd50801003ec15c89f57c9ae396f5d0fafd4aa63e4a16c1c54ec"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0302.json",
+      "sha256": "002156ef891ae7338e2e9d471c1e30f4aaf8c31df706093f62cbb4c60ec86701"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0305.json",
+      "sha256": "2f951800c5ad04aae03a23a35da0bae3ec2229fe63d1e1c9cdffaf9db575bd09"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0401.json",
+      "sha256": "633111470d2df1451aac71d1e707c988efdedb7b9fa21565ea321dd5119036db"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1002.json",
+      "sha256": "77dd8a2468b83b4cb19698927a01082a9aefb218a12f2a825662aeb72ab1beb9"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1103.json",
+      "sha256": "1e3305a9bc5b12d91a585e1c016ee2c77728b4c8c2a4fca5d63b69775052da18"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0105.json",
+      "sha256": "b93835bee17115ae4fb3f27795d662ecab40d6bc3982a96eebb3d25609eea3b7"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0212.json",
+      "sha256": "423c215afc13609e793ae9c1171df4c6d8277409a207f3ee2e3c983d13d38931"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0307.json",
+      "sha256": "dea648681a5ae2a38cc2c5e4aaac3d4902f3bca2606e905d902b39ff54d58bd7"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0607.json",
+      "sha256": "bf2e8852635317f8dd782fb22a941926308bae70dfb123284918ec210530372e"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0403.json",
+      "sha256": "4d6d1781509e31bf5a428d53fac463c559b5e4bcd026629a25d03e6d5fca66cf"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0804.json",
+      "sha256": "371309addae85a5b118e69b1c1b07d811703b8862c40301acd804c5195494e6c"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1205.json",
+      "sha256": "0b09bb9698c823bf21ff7cebb631e150580bed530482573f82abfaae71a46fd5"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0801.json",
+      "sha256": "8edef18105a5e058d985551e489280ab700762d0c87625b77d1756a048f46d1d"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0502.json",
+      "sha256": "d4aca8ab7594bfa9a2dcc865eeb5870c2751eda6c77121d8bed95858b9c71023"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0102.json",
+      "sha256": "fe6cdef1d102af2e593c1a1d4c4a95ddffebfa176304d138c8cfe0609548c232"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0301.json",
+      "sha256": "05be1c348081647060eb824c62313a1a80305f700cc1d778264b526dc3beb373"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0407.json",
+      "sha256": "e4c6d969d14586787fca3f87dc761d2135b44c6921ec18dfbdaf06d8abf30f0e"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1104.json",
+      "sha256": "73c6e4b35785eb7d0a65d1adde0634464f564b1852809a34aae20f4343905616"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0110.json",
+      "sha256": "3d210c1a3224b83577de6620917826296cbf81bee0793af358192edf3dcac3f1"
+    },
+    {
+      "bytes": 948,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0201.json",
+      "sha256": "11efd4f08ecd399574a828236497fedb4424fdad23ea529ff4a4a837857c644d"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0207.json",
+      "sha256": "efae32ac245891c820a58329f615899e64588f868e5e64c4fe5982e0578d6a62"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0208.json",
+      "sha256": "7ac41e259213121fb37ea8c8b9b1bcbf73fed95c2a3b929b988816adf402b42b"
+    },
+    {
+      "bytes": 948,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0209.json",
+      "sha256": "afb35347cd2158a3d86a05000fb1d37dd09596ccf0c8112d7be1c8fa9563b8e4"
+    },
+    {
+      "bytes": 948,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0409.json",
+      "sha256": "68ca1ca52797ceea231a70fe2a5d9cbee156628ce96beb4bafc5b6d1946c2726"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0808.json",
+      "sha256": "8b80ee56014935d5902b8075a567f152987466cd55cbd15f07195e5c974853b8"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1105.json",
+      "sha256": "93a73fd92899ee62fda35b2df9e6a7ed8b1aeac0bcd2c13d8e1e3e0dad81df2a"
+    },
+    {
+      "bytes": 912,
+      "content_type": "application/json",
+      "path": "national.json",
+      "sha256": "24cb5f5ebd9446f02bf52b030c00543c8da994b99955887691eccb1a97f7c4ce"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0103.json",
+      "sha256": "c489bd4d50a108186ab9125b2cec407e42c60aadf687b468bcad16f2c1698a48"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0211.json",
+      "sha256": "b8b19c2a549942ad5730c8f5c48b288d3ff700249d888f7327d15f3c5d2ec3de"
+    },
+    {
+      "bytes": 948,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0214.json",
+      "sha256": "a144d341afede231c198364fdd75acde2478740c27cd7bded4d96c97d077a4b4"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0711.json",
+      "sha256": "31a38346e443d76f1a9c0bcb5528617a972f11e35f579258ad9d8cf8d4fb68af"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1203.json",
+      "sha256": "f41a5bc15a65f6ae94062b257486bee43311f8514c25eb649c41d11a1d621a7d"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0802.json",
+      "sha256": "b844249c4a203895d36d012a9cc2c5738070078222e9b2b65e507ca51717a8f3"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0503.json",
+      "sha256": "9d71c953cf2416a864b113695e0f26d89122fa1ade8b3e0b199cf7cf64a2cfc3"
+    },
+    {
+      "bytes": 948,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0203.json",
+      "sha256": "9daf720327f1d8e6a39f40899350afec501ca0fdc0addc78121695c3ef3a681d"
+    },
+    {
+      "bytes": 948,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0213.json",
+      "sha256": "8003e893348c7399c6913366922ad7c03a517efd55962a09628a43661654e6a6"
+    },
+    {
+      "bytes": 948,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0309.json",
+      "sha256": "7d99b0ed4b9e56dd71ca82e521b3d5f3cb0b32013561553be1a96b693994188a"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1003.json",
+      "sha256": "51ba420b5f07b552d82e41b7510c2f904aa6c7b22d1dd5c659c5af096e181b59"
+    },
+    {
+      "bytes": 948,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0104.json",
+      "sha256": "0926202d939825cf6c55cdae87d3cd64a34e0705a94b7955b845b0d91f5b921b"
+    },
+    {
+      "bytes": 948,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0202.json",
+      "sha256": "85ea1c0970f17e291003194f0f72552caa3e193f66a2e8070966f0c5481b68c7"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0306.json",
+      "sha256": "67e06a718501a777af6ea116d968d1376ce1334213123f81fa304aed6f33d522"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0410.json",
+      "sha256": "9b19d6da3e9d14f84702926b1cf98c3e0e4ca536c31694e36bb9325114fa8bf9"
+    },
+    {
+      "bytes": 947,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0605.json",
+      "sha256": "41ae3d825ae5eaa922e80a85e94ebc40c20f251a44a531bbdd0c071a02df133b"
+    },
+    {
+      "bytes": 944,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0707.json",
+      "sha256": "0bb5e28cba5631ec21f879f021a9c117a28653ffccc9f108bd52fba602f43354"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1004.json",
+      "sha256": "61cf1370b26e21a10cc32f58fe5ac22c486be0812a92632fa6afa55846d0d1ff"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0902.json",
+      "sha256": "c355a254549b5e40eb9d582962c9716f56846cc7cdb26ede87918ebbd9ec0dbd"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1005.json",
+      "sha256": "b1d22b45596e56aa1ad1e456f804044b85da8c54f552da216164dab8240e17c8"
+    },
+    {
+      "bytes": 948,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0303.json",
+      "sha256": "64122a22180ff7d1db42a616df6fef50febd84cdf27743ac1254798fdecb5900"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0602.json",
+      "sha256": "46415f1da0dcf02eb465c38c5dc107446ee00a09762b3f6d9099eac5b331cd58"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0603.json",
+      "sha256": "092db4c54fcd95c15ffe73cad5cdff22487b65e239eb1fc8693814765fdb1897"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0609.json",
+      "sha256": "26a83f8eb1c23781d106398eda43a360b60c3f10608b0c345a44ec37fa168a74"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0701.json",
+      "sha256": "4d0f1560022d1974455e20c986c8cbb2eea63e7024cb4bec43858caccb52ad35"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1207.json",
+      "sha256": "466efa8b40fbe9570a35eb626e6aa65fb46743e10ba01b2506c69736790a49dd"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0806.json",
+      "sha256": "40ba01d6072c867f31879d6e35c47d2332d144b87e6be502a2973a895dbd0ddc"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0703.json",
+      "sha256": "b6579dd019d863e256e779196e8331cca8f03fab91feeb595d1ee8671b03cfec"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0206.json",
+      "sha256": "96626f4059eae2e7ac784b02871847b3fa59716ad3e250dbaaf341bbf26ab79f"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0501.json",
+      "sha256": "ded01195a3d2b2081c81a7c0400afc28556ecf8d70744bea2c2f54510ec8b3fa"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0601.json",
+      "sha256": "5b5bc6302e90d2d23c8df470e06a8891538a983f537270d69c20b8f384cf4576"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0606.json",
+      "sha256": "a9823278887cd01aff6206ae6cc884419ebb78a125450bbe5813fcc21aa403f2"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0706.json",
+      "sha256": "498b1b4470b849b279c849bb3d1b9daf0d47ef131ac77279192f15ffa8ba7210"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0903.json",
+      "sha256": "bc0833ad3e2f2ed2fd26aaba59e2f43503359ba7857e87b1808dc5e535fefd04"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0805.json",
+      "sha256": "60f1b5b5dbd5f075cbb61e7e56054aaabc065cb845cedb5b015238ab0f6c21fe"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0405.json",
+      "sha256": "9e90cfd9a8b386d19e573811800f9404de8d2f78b592e35f260cbdf5e8552390"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0106.json",
+      "sha256": "c2086de8e092ad62d2fd3839b2243e43289907ee13f3560bf1357cc9b9edb518"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1102.json",
+      "sha256": "fb397256c8bbf94470e88a80d42cf818fd545b06863cce4b04b7f27fbf252a0a"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1106.json",
+      "sha256": "4359090bbe86ea9e98ed9e4a5430ded8ed61b3bad4a350cf9b01bbf5facb02b6"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0402.json",
+      "sha256": "535a8417a9bd5c26f794a912c7fbdebb53dcc373738c651f9f95dd3fd2f1c2f4"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0107.json",
+      "sha256": "11cc125bf55c56f73b2aeb2ec75b4c6e6be5ab03ab8cfebda6ba69ba103a6d30"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0205.json",
+      "sha256": "a2ea6058809ec692edce3a61559c9ffd89abf18fec11fc3c1799eb3194b8997c"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0210.json",
+      "sha256": "79840de4b35080c61a1b382a0ce59f14771fa65e1bde2e77a0e04c7dfa167fe3"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1107.json",
+      "sha256": "51fe4461257cfde69e861e0bcc3b8b848037e238d3079cc6eec221fd830467ed"
+    },
+    {
+      "bytes": 951,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0304.json",
+      "sha256": "5730f8a3e0ae8c611449929a03c90bdf807ca9f83a74dca09b64e081c05cb521"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0408.json",
+      "sha256": "60528a697b2bf74372b06a8de897ff0e469a28e30c9f1947bebbd869a77efe8e"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0604.json",
+      "sha256": "1cffa75346ca2138831e2f7ab09f87e3b8fab5c910b70bed50bba6b5ae550b63"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0709.json",
+      "sha256": "e1c778bd754879bc5fa514862e7168f24e66c9c823b5b36cd333311baeb36f53"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1209.json",
+      "sha256": "83d780abc924f7e7f6ed2a54cd1c5df4e264eebd183ceccfaa33594c4188780b"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0708.json",
+      "sha256": "88850d176d49bd22ea81d69db4600c3dde9e2ade2df3595163306e8b6d5a940b"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1008.json",
+      "sha256": "a8bc9bda706cad3357eb6d7023ae6a7913bdd5f2a68f6cb9f238e778ea34b176"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.1202.json",
+      "sha256": "9b8bd0d33fd26d2c034ea929ac20baac4162c7ffa67bf47985bc2616e9b21c2a"
+    },
+    {
+      "bytes": 948,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0108.json",
+      "sha256": "36190899e58d4bd0558819b11f56907e62dfe292da0e2c594a3294407e98ee55"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0310.json",
+      "sha256": "bea89305fc1eb6ad7fbf49e732a95d9a658a07a46b63e61c98310448383993da"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0406.json",
+      "sha256": "9c0a1504355539941775927018031b2b2717f8a7d0b690ded02ddf3da72d14fd"
+    },
+    {
+      "bytes": 945,
+      "content_type": "application/json",
+      "path": "places/lu.commune.0608.json",
+      "sha256": "882d6f792f74dd1ec705bc639d0ffc3cb83d5cae19ef25b6dafdcf37a90a2b34"
+    }
+  ],
+  "pipeline_version": "0.1.0",
+  "status": "published",
+  "warnings": [
+    "lu.commune.0711 2010: no figure published upstream, recorded as missing rather than zero.",
+    "Skipped 204 canton-level rows: DF_X021 mixes cantons, communes and the national total in one dimension, and no canton geography set is catalogued yet.",
+    "Release narrowed to periods from 2024: 1414 of 1717 observations were not published. Warnings above may refer to periods outside this release."
+  ]
+}

@@ -7,7 +7,8 @@ into a component.
 Validation is two-layered:
   1. every file must satisfy its generated JSON Schema;
   2. cross-references must resolve, and an *active* source must have a
-     connector that actually exists in code.
+     connector that actually exists in code — or, for tiles the browser draws
+     directly, an active basemap that displays it.
 """
 
 from __future__ import annotations
@@ -27,6 +28,7 @@ DIRECTORY_ENTITIES: dict[str, str] = {
     "indicators": "indicator",
     "geographies": "geography-set",
     "datasets": "dataset",
+    "basemaps": "basemap",
 }
 
 
@@ -107,6 +109,12 @@ def validate_catalog(
         for directory in DIRECTORY_ENTITIES
     }
 
+    displayed_sources = {
+        entry.data.get("source_id")
+        for entry in entries
+        if entry.directory == "basemaps" and entry.data.get("status", "draft") == "active"
+    }
+
     # 3. Cross-references and the connector boundary --------------------------
     for entry in entries:
         data = entry.data
@@ -114,12 +122,44 @@ def validate_catalog(
         if entry.directory == "sources":
             connector = data.get("connector")
             status = data.get("status", "draft")
-            if status == "active" and connector not in known_connectors:
+            if status == "active" and connector is None:
+                # The only thing allowed to be active without a connector is a
+                # basemap's tiles, which the browser fetches straight from the
+                # producer. Anything else active with no connector publishes nothing.
+                if entry.id not in displayed_sources:
+                    problems.append(
+                        f"{rel(entry.path)}: source is active but has no connector "
+                        "and no active basemap in catalog/basemaps displays it"
+                    )
+            elif status == "active" and connector not in known_connectors:
                 problems.append(
                     f"{rel(entry.path)}: source is active but connector {connector!r} "
                     f"is not registered in letzscan.connectors "
                     f"(known: {', '.join(sorted(known_connectors)) or 'none'})"
                 )
+
+        if entry.directory == "basemaps":
+            source_id = data.get("source_id")
+            if source_id not in ids_by_directory["sources"]:
+                problems.append(
+                    f"{rel(entry.path)}: source_id {source_id!r} is not in catalog/sources"
+                )
+            elif data.get("status", "draft") == "active":
+                source = next(e for e in entries if e.directory == "sources" and e.id == source_id)
+                if source.data.get("status", "draft") != "active":
+                    problems.append(
+                        f"{rel(entry.path)}: basemap is active but its source {source_id!r} "
+                        "is not; a reviewed licence must be active before tiles ship"
+                    )
+                if source.data.get("access") != "open":
+                    problems.append(
+                        f"{rel(entry.path)}: basemap source {source_id!r} must have "
+                        "access: open — the browser fetches tiles directly, so any "
+                        "credential would end up in the bundle"
+                    )
+            min_zoom, max_zoom = data.get("min_zoom"), data.get("max_zoom")
+            if isinstance(min_zoom, int) and isinstance(max_zoom, int) and min_zoom > max_zoom:
+                problems.append(f"{rel(entry.path)}: min_zoom is greater than max_zoom")
 
         if entry.directory == "indicators":
             denominator = data.get("denominator_indicator_id")

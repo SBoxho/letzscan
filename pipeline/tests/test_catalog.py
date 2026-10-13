@@ -84,3 +84,81 @@ def test_dangling_cross_reference_is_reported(tmp_path: Path) -> None:
     )
     problems = validate_catalog(tmp_path, known_connectors={"demo"})
     assert any("is not in catalog/sources" in problem for problem in problems)
+
+
+def _basemap(**overrides: object) -> dict[str, object]:
+    data: dict[str, object] = {
+        "id": "demo-tiles",
+        "title": "Demo tiles",
+        "source_id": "demo",
+        "tiles": ["https://tiles.example.org/{z}/{x}/{y}.png"],
+        "tile_size": 256,
+        "min_zoom": 0,
+        "max_zoom": 19,
+        "status": "active",
+    }
+    data.update(overrides)
+    return data
+
+
+def _connectorless_source(**overrides: object) -> dict[str, object]:
+    source = _source(status="active", **overrides)
+    del source["connector"]
+    return source
+
+
+def test_an_active_basemap_lets_its_source_be_active_without_a_connector(tmp_path: Path) -> None:
+    _write(tmp_path, "sources/demo.yaml", _connectorless_source())
+    _write(tmp_path, "basemaps/demo-tiles.yaml", _basemap())
+    assert validate_catalog(tmp_path, known_connectors=set()) == []
+
+
+def test_an_active_source_with_no_connector_and_no_basemap_fails(tmp_path: Path) -> None:
+    _write(tmp_path, "sources/demo.yaml", _connectorless_source())
+    problems = validate_catalog(tmp_path, known_connectors=set())
+    assert any("no active basemap" in problem for problem in problems)
+
+
+def test_a_draft_basemap_does_not_license_an_active_source(tmp_path: Path) -> None:
+    _write(tmp_path, "sources/demo.yaml", _connectorless_source())
+    _write(tmp_path, "basemaps/demo-tiles.yaml", _basemap(status="draft"))
+    problems = validate_catalog(tmp_path, known_connectors=set())
+    assert any("no active basemap" in problem for problem in problems)
+
+
+def test_an_active_basemap_needs_an_active_source(tmp_path: Path) -> None:
+    _write(tmp_path, "sources/demo.yaml", _source(status="draft"))
+    _write(tmp_path, "basemaps/demo-tiles.yaml", _basemap())
+    problems = validate_catalog(tmp_path, known_connectors={"demo"})
+    assert any("its source 'demo' is not" in problem for problem in problems)
+
+
+def test_a_basemap_behind_a_credential_is_refused(tmp_path: Path) -> None:
+    _write(tmp_path, "sources/demo.yaml", _connectorless_source(access="api_key"))
+    _write(tmp_path, "basemaps/demo-tiles.yaml", _basemap())
+    problems = validate_catalog(tmp_path, known_connectors=set())
+    assert any("must have access: open" in problem for problem in problems)
+
+
+def test_a_plain_http_tile_template_is_refused(tmp_path: Path) -> None:
+    _write(tmp_path, "sources/demo.yaml", _connectorless_source())
+    _write(
+        tmp_path,
+        "basemaps/demo-tiles.yaml",
+        _basemap(tiles=["http://tiles.example.org/{z}/{x}/{y}.png"]),
+    )
+    problems = validate_catalog(tmp_path, known_connectors=set())
+    assert any("tiles/0" in problem for problem in problems)
+
+
+def test_a_basemap_must_point_at_a_catalogued_source(tmp_path: Path) -> None:
+    _write(tmp_path, "basemaps/demo-tiles.yaml", _basemap(source_id="does-not-exist"))
+    problems = validate_catalog(tmp_path, known_connectors=set())
+    assert any("is not in catalog/sources" in problem for problem in problems)
+
+
+def test_inverted_zoom_range_is_reported(tmp_path: Path) -> None:
+    _write(tmp_path, "sources/demo.yaml", _connectorless_source())
+    _write(tmp_path, "basemaps/demo-tiles.yaml", _basemap(min_zoom=12, max_zoom=4))
+    problems = validate_catalog(tmp_path, known_connectors=set())
+    assert any("min_zoom is greater than max_zoom" in problem for problem in problems)

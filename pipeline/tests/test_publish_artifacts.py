@@ -60,6 +60,7 @@ def test_published_files_are_canonical_entities(published: Path) -> None:
         "catalog/datasets/": "dataset",
         "catalog/indicators/": "indicator",
         "catalog/geographies/": "geography-set",
+        "catalog/basemaps/": "basemap",
     }
 
     seen = set()
@@ -118,6 +119,20 @@ def test_every_observation_is_stamped_with_the_release_that_produced_it(
 
     assert place
     assert all(observation["release_id"] == release["id"] for observation in place)
+
+
+def test_the_basemap_ships_with_the_source_that_licenses_it(published: Path) -> None:
+    release = _release(published)
+    base = published / release["id"]
+    paths = {output["path"] for output in release["outputs"]}
+
+    basemaps = sorted(path for path in paths if path.startswith("catalog/basemaps/"))
+    assert basemaps, "an active basemap must be published, or the map has no tiles"
+    for path in basemaps:
+        basemap = json.loads((base / path).read_text(encoding="utf-8"))
+        assert basemap["status"] == "active"
+        # Its attribution is read from the source, so the source must travel with it.
+        assert f"catalog/sources/{basemap['source_id']}.json" in paths
 
 
 def test_publish_refuses_a_connector_that_has_no_place_dataset(tmp_path: Path) -> None:

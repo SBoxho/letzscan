@@ -1,4 +1,5 @@
 import type { z } from 'zod';
+import { Basemap } from './basemap.js';
 import { Dataset } from './dataset.js';
 import { Geography, GeographySet } from './geography.js';
 import { Indicator } from './indicator.js';
@@ -22,6 +23,7 @@ export const CANONICAL_SCHEMAS = {
   observation: Observation,
   'live-feature': LiveFeature,
   release: Release,
+  basemap: Basemap,
 } as const satisfies Record<string, z.ZodType>;
 
 export type CanonicalSchemaName = keyof typeof CANONICAL_SCHEMAS;
@@ -35,4 +37,5 @@ export const CATALOG_SCHEMA_BY_DIRECTORY = {
   indicators: 'indicator',
   geographies: 'geography-set',
   datasets: 'dataset',
+  basemaps: 'basemap',
 } as const satisfies Record<string, CanonicalSchemaName>;

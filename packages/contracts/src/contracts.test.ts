@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { Basemap } from './basemap.js';
 import { CANONICAL_SCHEMAS } from './registry.js';
 import { LiveFeature } from './live-feature.js';
 import { Observation } from './observation.js';
@@ -8,6 +9,7 @@ import { Source } from './source.js';
 describe('canonical registry', () => {
   it('exposes every entity the architecture defines', () => {
     expect(Object.keys(CANONICAL_SCHEMAS).sort()).toEqual([
+      'basemap',
       'dataset',
       'geography',
       'geography-set',
@@ -129,4 +131,35 @@ describe('Source', () => {
     const { terms_checked_at: _checked, ...withoutTerms } = base;
     expect(Source.safeParse(withoutTerms).success).toBe(false);
   });
+});
+
+describe('Basemap', () => {
+  const base = {
+    id: 'example-basemap',
+    title: 'Example basemap',
+    source_id: 'example-source',
+    tiles: ['https://tiles.example.org/{z}/{x}/{y}.png'],
+    tile_size: 256,
+    min_zoom: 0,
+    max_zoom: 19,
+  };
+
+  it('defaults a new basemap to draft so nothing publishes by accident', () => {
+    expect(Basemap.parse(base).status).toBe('draft');
+  });
+
+  it('refuses a plain-http tile URL, which an https page cannot load', () => {
+    const result = Basemap.safeParse({
+      ...base,
+      tiles: ['http://tiles.example.org/{z}/{x}/{y}.png'],
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it.each(['https://tiles.example.org/{z}/{x}.png', 'https://tiles.example.org/tile.png'])(
+    'refuses a template that does not address every tile: %s',
+    (template) => {
+      expect(Basemap.safeParse({ ...base, tiles: [template] }).success).toBe(false);
+    },
+  );
 });

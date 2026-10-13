@@ -52,7 +52,9 @@ file. Compute happens on a schedule, never inside a user's request.
 
 **The browser never talks to a provider.** It knows two origins: published
 artifacts and the LëtzScan edge API. That is what makes "no credential can reach
-the browser" a structural property rather than a discipline.
+the browser" a structural property rather than a discipline. The one fenced
+exception is basemap tiles, which MapLibre draws straight from a catalogued,
+keyless producer ([ADR 0008](adr/0008-basemap.md)); no data read ever does.
 
 **No general backend, no database.** There is no user account, no write path and
 no personalisation that cannot live in the URL or in `localStorage`. Postgres,
@@ -140,8 +142,10 @@ A copied URL must reconstruct the same view. If a user would send it to a
 colleague, it is a search parameter, not store state.
 See [ADR 0003](adr/0003-frontend-state-ownership.md).
 
-The map is loaded behind a lazy boundary and currently has **no basemap**: a
-basemap is a licensing decision, not a default, and will be chosen deliberately.
+The map is loaded behind a lazy boundary. Its basemap is ACT's open-data Carte
+de base, catalogued like any source: the tile template and the attribution reach
+the map through the published release, never as strings in a component. See
+[ADR 0008](adr/0008-basemap.md).
 
 ## 7. Environments
 
@@ -159,7 +163,7 @@ never starts polling providers. See
 
 ## 8. What is deliberately not here yet
 
-PMTiles, Parquet-in-the-browser, a basemap, analytics, SEO prerendering, i18n,
+PMTiles, Parquet-in-the-browser, analytics, SEO prerendering, i18n,
 a chart library, a real connector, a database, a monorepo build framework, and
 automatic production deployment. Each is a decision to make when a real feature
 needs it, and each will get its own ADR.

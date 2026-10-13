@@ -1,0 +1,19 @@
+{
+  "access": "open",
+  "cadence": "irregular",
+  "canonical_url": "https://data.public.lu/fr/datasets/carte-de-base-webservices-wms-et-wmts/",
+  "contact": "https://act.public.lu/fr/support/contact.html",
+  "coverage": "Luxembourg from ACT's national topographic database (BD-L-TC); the rest of the world from OpenStreetMap, at a lower level of detail. Web Mercator, zoom 0–19.",
+  "id": "act-geoportail-basemap",
+  "licence": {
+    "attribution": "Basemap © ACT Luxembourg (geoportail.lu) · Outside Luxembourg: © MapTiler © OpenStreetMap contributors (openstreetmap.org/copyright)",
+    "notes": "Verified 2026-10-13. ACT's own organisation page on data.public.lu publishes \"Carte de base - Webservices WMS et WMTS\" with license \"cc-zero\" (https://data.public.lu/api/1/datasets/carte-de-base-webservices-wms-et-wmts/), and lists https://wmts1.geoportail.lu/opendata/wmts/1.0.0/WMTSCapabilities.xml as a resource of that exact dataset, so the grant is recorded against the distribution actually called, not inferred from the portal. The capabilities document itself declares Fees \"none\" and AccessConstraints \"none\".\nACT's legal notice (https://www.geoportail.lu/fr/propos/mentions-legales/, §1.6) grants no licence \"sauf indication contraire\"; the CC0 dataset entry above is that contrary indication. §1.2 asks users to avoid abusive requests — tiles are fetched only as a visitor pans the map, never prefetched or mirrored.\nThe CC0 grant reaches ACT's own data (the dataset description: \"déduite de la BD-L-TC\"). Outside Luxembourg the same tiles are drawn from OpenStreetMap via OpenMapTiles: geoportail.lu's own viewer configuration (https://map.geoportail.lu/themes?version=2&background=background) lists `basemap` as an alias of its `roadmap` background and attributes it \"© MapTiler © OpenStreetMap contributors for data outside of Luxembourg\". OSM data is ODbL; rendered tiles are a Produced Work, which requires that attribution to be shown. The attribution above therefore credits both, and must not be shortened to ACT alone.",
+    "spdx": "CC0-1.0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  "notes": "WMTS layer `basemap`, tile matrix set GLOBAL_WEBMERCATOR (EPSG:3857, 256 px, top-left origin, so it is addressable as plain XYZ). Responses carry Access-Control-Allow-Origin: * and Cache-Control: public, max-age=259200, checked 2026-10-13. Matrix identifiers are listed zero-padded (\"08\") in the capabilities but the server answers unpadded zoom levels, which is what MapLibre requests.\nThe capabilities template contains a doubled slash (geoportail.lu//opendata); the single-slash form returns the same tiles and is what the basemap entry uses.",
+  "producer": "Administration du cadastre et de la topographie (ACT)",
+  "status": "active",
+  "terms_checked_at": "2026-10-13",
+  "title": "ACT Carte de base — geoportail.lu open-data WMTS"
+}

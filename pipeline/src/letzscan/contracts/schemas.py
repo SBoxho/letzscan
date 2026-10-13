@@ -20,6 +20,7 @@ CANONICAL_ENTITIES: tuple[str, ...] = (
     "observation",
     "live-feature",
     "release",
+    "basemap",
 )
 
 

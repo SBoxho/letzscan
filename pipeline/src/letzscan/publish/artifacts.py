@@ -13,6 +13,7 @@ Layout, following docs/architecture.md §5:
     published/{release_id}/catalog/datasets/{id}.json      Dataset
     published/{release_id}/catalog/indicators/{id}.json    Indicator
     published/{release_id}/catalog/geographies/{id}.json   GeographySet
+    published/{release_id}/catalog/basemaps/{id}.json      Basemap
     published/{release_id}/places/{geo_id}.json            Observation[]
     published/{release_id}/national.json                   Observation[]
 
@@ -113,6 +114,16 @@ def publish_observations(
         ("geographies", geography_set_id, "geography-set"),
     ]
     wanted += [("indicators", indicator, "indicator") for indicator in data["indicator_ids"]]
+
+    # Active basemaps ride along with every release, with the source that carries
+    # their licence, so the map reads its tiles and its attribution as data too.
+    for (directory, identifier), entry in sorted(entries.items()):
+        if directory != "basemaps" or entry.data.get("status", "draft") != "active":
+            continue
+        wanted.append(("basemaps", identifier, "basemap"))
+        source = ("sources", entry.data["source_id"], "source")
+        if source not in wanted:
+            wanted.append(source)
 
     for directory, identifier, entity in wanted:
         entry = entries.get((directory, identifier))

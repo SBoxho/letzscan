@@ -58,12 +58,13 @@ because it is a copy that will eventually be wrong.
 
 ## Current sources
 
-| Source                                                          | Status     | Licence | Terms read | Read at                                                                                                |
-| --------------------------------------------------------------- | ---------- | ------- | ---------- | ------------------------------------------------------------------------------------------------------ |
-| `statec-lustat` — STATEC LUSTAT statistical database (SDMX API) | **active** | CC0-1.0 | 2026-08-19 | [statistiques.public.lu/fr/support/notice.html](https://statistiques.public.lu/fr/support/notice.html) |
-| `statec-lau-codes` — STATEC LAU code register                   | draft      | CC0-1.0 | 2026-08-19 | [statistiques.public.lu/fr/support/notice.html](https://statistiques.public.lu/fr/support/notice.html) |
+| Source                                                            | Status     | Licence                                       | Terms read | Read at                                                                                                     |
+| ----------------------------------------------------------------- | ---------- | --------------------------------------------- | ---------- | ----------------------------------------------------------------------------------------------------------- |
+| `statec-lustat` — STATEC LUSTAT statistical database (SDMX API)   | **active** | CC0-1.0                                       | 2026-08-19 | [statistiques.public.lu/fr/support/notice.html](https://statistiques.public.lu/fr/support/notice.html)      |
+| `statec-lau-codes` — STATEC LAU code register                     | draft      | CC0-1.0                                       | 2026-08-19 | [statistiques.public.lu/fr/support/notice.html](https://statistiques.public.lu/fr/support/notice.html)      |
+| `act-geoportail-basemap` — ACT Carte de base (geoportail.lu WMTS) | **active** | CC0-1.0 + ODbL attribution outside Luxembourg | 2026-10-13 | [data.public.lu — Carte de base](https://data.public.lu/fr/datasets/carte-de-base-webservices-wms-et-wmts/) |
 
-Both records rest on STATEC's own legal notice, section "Open Data et propriété
+The two STATEC records rest on STATEC's own legal notice, section "Open Data et propriété
 intellectuelle (Copyright)", which publishes its content "sans restriction, sous
 les termes du Transfert universel dans le Domaine Public Creative Commons CC0
 1.0". The CGU on that page names both `statistiques.public.lu` **and**
@@ -83,3 +84,16 @@ guidelines as a matter of goodwill, and LëtzScan attributes anyway, per rule 3.
 
 `catalog/` remains the authoritative record; this table is a summary of it. A
 generated, always-current listing is still to come.
+
+### The basemap
+
+`act-geoportail-basemap` is the map's background, drawn straight from ACT's
+open-data tile service ([ADR 0008](docs/adr/0008-basemap.md)). ACT publishes this
+exact WMTS service on data.public.lu as `cc-zero`. That entry is the "indication
+contraire" that ACT's [legal notice](https://www.geoportail.lu/fr/propos/mentions-legales/)
+requires before any licence applies. The CC0 grant covers ACT's own data,
+inside Luxembourg. Outside Luxembourg the tiles are rendered from OpenStreetMap,
+and geoportail.lu's own configuration credits "© MapTiler © OpenStreetMap
+contributors". Rendered tiles are an ODbL Produced Work, so the attribution
+shown on the map credits OpenStreetMap as well as ACT. Under rule 3, that
+attribution is drawn on the map itself.
