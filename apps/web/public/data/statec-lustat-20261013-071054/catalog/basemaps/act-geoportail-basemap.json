@@ -1,0 +1,13 @@
+{
+  "id": "act-geoportail-basemap",
+  "max_zoom": 19,
+  "min_zoom": 0,
+  "notes": "Chosen because ACT designed it as a quiet base for thematic overlays (\"avec un minimum de couleurs de façon à permettre une superposition d'informations thématiques\"), it needs no key, and it is the national mapping agency's own product. See docs/adr/0008-basemap.md and the source entry for the licence evidence.",
+  "source_id": "act-geoportail-basemap",
+  "status": "active",
+  "tile_size": 256,
+  "tiles": [
+    "https://wmts1.geoportail.lu/opendata/wmts/basemap/GLOBAL_WEBMERCATOR/{z}/{x}/{y}.png"
+  ],
+  "title": "ACT Carte de base"
+}

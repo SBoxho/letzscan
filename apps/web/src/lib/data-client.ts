@@ -11,7 +11,9 @@ import { env } from './env';
  *     becomes a visible, attributable error instead of a blank panel.
  *  2. The browser talks to exactly two origins — published artifacts and the
  *     LëtzScan edge API. It never calls a provider directly, so no provider
- *     credential can ever be needed client-side.
+ *     credential can ever be needed client-side. (Basemap tiles are drawn by
+ *     MapLibre from a keyless, catalogued producer and never pass through
+ *     here; see docs/adr/0008-basemap.md.)
  */
 
 export class ContractViolationError extends Error {

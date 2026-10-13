@@ -6,10 +6,11 @@ import {
   GeographySet,
   Indicator,
   Observation,
-  Release,
+  type Release,
   Source,
 } from '@letzscan/contracts';
 import { HttpError, dataUrl, fetchContract } from '../../lib/data-client';
+import { byId, fetchRelease } from '../../lib/release';
 
 /**
  * Reading one commune's profile out of the published artifacts.
@@ -35,25 +36,6 @@ export interface PlaceProfile {
   sources: Record<string, Source>;
   indicators: Record<string, Indicator>;
   datasets: Record<string, Dataset>;
-}
-
-function pathsIn(release: Release, prefix: string): string[] {
-  return release.outputs.map((output) => output.path).filter((path) => path.startsWith(prefix));
-}
-
-async function byId<T extends { id: string }>(
-  release: Release,
-  prefix: string,
-  schema: z.ZodType<T>,
-): Promise<Record<string, T>> {
-  const entities = await Promise.all(
-    pathsIn(release, prefix).map((path) => fetchContract(dataUrl(`${release.id}/${path}`), schema)),
-  );
-  return Object.fromEntries(entities.map((entity) => [entity.id, entity]));
-}
-
-export function fetchRelease(): Promise<Release> {
-  return fetchContract(dataUrl('latest.json'), Release);
 }
 
 export async function fetchPlaceProfile(geoId: string): Promise<PlaceProfile> {

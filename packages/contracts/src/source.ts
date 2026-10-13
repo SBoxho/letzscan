@@ -21,8 +21,13 @@ export const Source = z
     /** Date a maintainer last read the upstream terms. Re-checked on a schedule. */
     terms_checked_at: IsoDate,
     cadence: Cadence,
-    /** Connector module responsible for turning this source into canonical records. */
-    connector: StableId,
+    /**
+     * Connector module responsible for turning this source into canonical records.
+     * Omitted only for a source LëtzScan never ingests: tiles the browser draws
+     * directly through a `catalog/basemaps/` entry. Validation requires an active
+     * source to have either a registered connector or an active basemap.
+     */
+    connector: StableId.optional(),
     /**
      * `draft` sources are catalogued but not published. `disabled` records a
      * deliberate stop with a reason, so a dark feed is never a mystery.

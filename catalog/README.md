@@ -8,6 +8,7 @@ sources/       one reviewed upstream distribution per file
 indicators/    stable measure definitions
 geographies/   versioned geography sets and their lineage
 datasets/      published datasets (added with the first vertical slice)
+basemaps/      reviewed, keyless raster basemaps the browser draws (ADR 0008)
 ```
 
 ## Rules
@@ -17,7 +18,8 @@ datasets/      published datasets (added with the first vertical slice)
 - **`terms_checked_at` is a fact, not a formality.** It records when a
   maintainer last read the upstream terms. An overdue date is a task.
 - **A source starts as `draft`.** It becomes `active` only when a connector
-  exists and it actually publishes. `disabled` requires a `status_reason`, so a
+  exists and it actually publishes — or, for tiles the browser draws directly,
+  when an active entry in `basemaps/` displays it. `disabled` requires a `status_reason`, so a
   dark feed is self-documenting.
 - **File name equals `id`.** Validation enforces it.
 - **Nothing here is retyped into application code.** Source metadata, licences

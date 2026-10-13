@@ -117,8 +117,7 @@
     "access",
     "licence",
     "terms_checked_at",
-    "cadence",
-    "connector"
+    "cadence"
   ],
   "title": "Source",
   "description": "A reviewed upstream provider distribution and its reuse terms."
