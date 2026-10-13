@@ -1,6 +1,6 @@
 /// <reference types="vitest/config" />
 import { fileURLToPath, URL } from 'node:url';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig, loadEnv, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
@@ -22,12 +22,36 @@ function assertNoBrowserSecrets(mode: string, root: string): void {
   }
 }
 
+/**
+ * MapLibre's worker is only bundled because MapCanvas imports it with
+ * `?worker&url`. Without it every map source silently fails to load, and an SPA
+ * fallback hides the 404 behind a 200 text/html. Fail the build instead.
+ */
+function requireMapLibreWorker(): Plugin {
+  return {
+    name: 'letzscan:require-maplibre-worker',
+    apply: 'build',
+    generateBundle(_options, bundle) {
+      const found = Object.keys(bundle).some((file) =>
+        /(^|\/)maplibre-gl-worker-[\w-]+\.js$/.test(file),
+      );
+      if (!found) {
+        this.error(
+          'MapLibre worker chunk missing from the build output. ' +
+            "MapCanvas.tsx must import 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url' " +
+            'and pass it to maplibregl.setWorkerUrl().',
+        );
+      }
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => {
   const root = fileURLToPath(new URL('.', import.meta.url));
   assertNoBrowserSecrets(mode, root);
 
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), requireMapLibreWorker()],
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),

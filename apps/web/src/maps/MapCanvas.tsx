@@ -1,6 +1,14 @@
 import { useEffect, useRef } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
+
+// MapLibre 6 locates its worker with `new URL('./maplibre-gl-worker.mjs',
+// import.meta.url)`, which Vite does not follow. Left alone, the worker 404s in
+// dev and is answered with index.html by an SPA fallback in production, and no
+// source ever loads. `?worker&url` makes Vite bundle it as its own chunk;
+// vite.config.ts fails the build if that chunk ever goes missing.
+maplibregl.setWorkerUrl(workerUrl);
 
 /**
  * Owns the MapLibre instance and nothing else.
