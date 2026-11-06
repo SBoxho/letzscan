@@ -20,7 +20,7 @@
     "maplibre-gl": "^6.4.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "zod": "^4.4.3",
+    "zod": "^4.5.2",
     "zustand": "^5.0.15"
   },
   "devDependencies": {
